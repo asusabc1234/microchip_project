@@ -77,8 +77,8 @@ volatile int original[6];
 //volatile int original_l = 0;
 void ADC_Initialize(void) {
     
-    TRISA = 1;		// Set as input port
-    ADCON1 = 0x0e;  	// Ref vtg is VDD & Configure pin as analog pin 
+    TRISA = 0xff;		// Set as input port
+    ADCON1 = 0x00;  	// Ref vtg is VDD & Configure pin as analog pin 
     ADCON2 = 0x90;
     ADFM = 1 ;          // Right Justifie
     ADCON2bits.ADCS = 0; // 
@@ -89,6 +89,8 @@ int ADC_Read(int channle)
 {
     int digital;
     
+    if(channle == 2) channle = 6;
+    if(channle == 3) channle = 7;
     ADCON0bits.CHS =  channle; 
     ADCON0bits.GO = 1;
     ADCON0bits.ADON = 1;
@@ -422,37 +424,42 @@ void main(void) {
     int i = 0;
     int j;
     for(j=0; j<6; j++){
-        int init_adc = ADC_Read(j);
-        original[j] = init_adc/300;
+        //int init_adc = ADC_Read(j);
+        //original[j] = init_adc/300;
+        original[j] = 0;
     }
     int turn = 0;
     while(1){
         //for(turn=0; turn<6; turn++){
-            int val = ADC_Read(turn);
-            val = val/300;
-            if(turn == TOP && val != original[TOP]) {
-                rotate_top(val);
-                original[TOP] = val;
+            if(turn == TOP) {
+                int val = ADC_Read(0);
+                rotate_top(val/300);
+                original[TOP] = val/300;
             }
-            else if(turn == BOT && val != original[BOT]) {
-                rotate_bot(val);
-                original[BOT] = val;
+            else if(turn == BOT) {
+                int val = ADC_Read(1);
+                rotate_bot(val/300);
+                original[BOT] = val/300;
             }
-            else if(turn == RIGHT && val != original[RIGHT]) {
-                rotate_r(val);
-                original[RIGHT] = val;
+            if(turn == RIGHT) {
+                int val = ADC_Read(6);
+                rotate_r(val/300);
+                original[RIGHT] = val/300;
             }    
-            else if(turn == LEFT && val != original[LEFT]) {
-                rotate_l(val);
-                original[LEFT] = val;
+            else if(turn == LEFT) {
+                int val = ADC_Read(7);
+                rotate_l(val/300);
+                original[LEFT] = val/300;
             }
-            else if(turn == SIDE_TOP && val != original[SIDE_TOP]) {
-                rotate_sidetop(val);
-                original[SIDE_TOP] = val;
+            else if(turn == SIDE_TOP) {
+                int val = ADC_Read(4);
+                rotate_sidetop(val/300);
+                original[SIDE_TOP] = val/300;
             }
-            else if(turn == SIDE_BOT && val != original[SIDE_BOT]) {
-                rotate_sidebot(val);
-                original[SIDE_BOT] = val;
+            else if(turn == SIDE_BOT) {
+                int val = ADC_Read(5);
+                rotate_sidebot(val/300);
+                original[SIDE_BOT] = val/300;
             }
         //}
         //need to add everything

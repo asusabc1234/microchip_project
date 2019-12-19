@@ -4732,8 +4732,8 @@ volatile int original[6];
 
 void ADC_Initialize(void) {
 
-    TRISA = 1;
-    ADCON1 = 0x0e;
+    TRISA = 0xff;
+    ADCON1 = 0x00;
     ADCON2 = 0x90;
     ADFM = 1 ;
     ADCON2bits.ADCS = 0;
@@ -4744,6 +4744,8 @@ int ADC_Read(int channle)
 {
     int digital;
 
+    if(channle == 2) channle = 6;
+    if(channle == 3) channle = 7;
     ADCON0bits.CHS = channle;
     ADCON0bits.GO = 1;
     ADCON0bits.ADON = 1;
@@ -5077,40 +5079,24 @@ void main(void) {
     int i = 0;
     int j;
     for(j=0; j<6; j++){
-        int init_adc = ADC_Read(j);
-        original[j] = init_adc/300;
+
+
+        original[j] = 0;
     }
     int turn = 0;
     while(1){
-
-            int val = ADC_Read(turn);
-            val = val/300;
-            if(turn == 0 && val != original[0]) {
-                rotate_top(val);
-                original[0] = val;
+# 444 "newmain.c"
+            if(turn == 2) {
+                int val = ADC_Read(6);
+                rotate_r(val/300);
+                original[2] = val/300;
             }
-            else if(turn == 1 && val != original[1]) {
-                rotate_bot(val);
-                original[1] = val;
+            else if(turn == 3) {
+                int val = ADC_Read(7);
+                rotate_l(val/300);
+                original[3] = val/300;
             }
-            else if(turn == 2 && val != original[2]) {
-                rotate_r(val);
-                original[2] = val;
-            }
-            else if(turn == 3 && val != original[3]) {
-                rotate_l(val);
-                original[3] = val;
-            }
-            else if(turn == 4 && val != original[4]) {
-                rotate_sidetop(val);
-                original[4] = val;
-            }
-            else if(turn == 5 && val != original[5]) {
-                rotate_sidebot(val);
-                original[5] = val;
-            }
-
-
+# 466 "newmain.c"
         LATDbits.LATD0 = rgb[i].r;
         LATDbits.LATD1 = rgb[i].g;
         LATDbits.LATD2 = rgb[i].b;

@@ -35,21 +35,13 @@
 [v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
 "88
 [v _ADC_Read ADC_Read `(i  1 e 2 0 ]
-"102
+"104
 [v _initial initial `(v  1 e 1 0 ]
-"135
+"137
 [v _rotate_r rotate_r `(v  1 e 1 0 ]
-"181
+"183
 [v _rotate_l rotate_l `(v  1 e 1 0 ]
-"228
-[v _rotate_top rotate_top `(v  1 e 1 0 ]
-"275
-[v _rotate_bot rotate_bot `(v  1 e 1 0 ]
-"322
-[v _rotate_sidetop rotate_sidetop `(v  1 e 1 0 ]
-"369
-[v _rotate_sidebot rotate_sidebot `(v  1 e 1 0 ]
-"416
+"418
 [v _main main `(v  1 e 1 0 ]
 "1313 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h
 [v _LATD LATD `VEuc  1 e 1 @3980 ]
@@ -140,149 +132,69 @@
 [v _rgb rgb `VE[24]S24  1 e 144 0 ]
 "76
 [v _original original `VE[6]i  1 e 12 0 ]
-"416
+"418
 [v _main main `(v  1 e 1 0 ]
 {
-"425
-[v main@init_adc init_adc `i  1 a 2 32 ]
-"431
+"450
+[v main@val_337 val `i  1 a 2 44 ]
+"445
 [v main@val val `i  1 a 2 42 ]
-"466
-[v main@temp temp `i  1 a 2 34 ]
-"428
-[v main@turn turn `i  1 a 2 40 ]
-"422
-[v main@i i `i  1 a 2 38 ]
-"423
-[v main@j j `i  1 a 2 36 ]
-"479
+"473
+[v main@temp temp `i  1 a 2 40 ]
+"424
+[v main@i i `i  1 a 2 50 ]
+"431
+[v main@turn turn `i  1 a 2 48 ]
+"425
+[v main@j j `i  1 a 2 46 ]
+"486
 } 0
-"228
-[v _rotate_top rotate_top `(v  1 e 1 0 ]
-{
-[s S24 RGB 6 `i 1 r 2 0 `i 1 g 2 2 `i 1 b 2 4 ]
-"257
-[v rotate_top@tempd tempd `S24  1 a 6 25 ]
-"256
-[v rotate_top@tempc tempc `S24  1 a 6 19 ]
-"237
-[v rotate_top@tempb tempb `S24  1 a 6 13 ]
-"236
-[v rotate_top@tempa tempa `S24  1 a 6 7 ]
-"254
-[v rotate_top@buf_247 buf `i  1 a 2 5 ]
-"234
-[v rotate_top@buf buf `i  1 a 2 3 ]
-"228
-[v rotate_top@val val `i  1 p 2 0 ]
-"273
-} 0
-"322
-[v _rotate_sidetop rotate_sidetop `(v  1 e 1 0 ]
-{
-[s S24 RGB 6 `i 1 r 2 0 `i 1 g 2 2 `i 1 b 2 4 ]
-"351
-[v rotate_sidetop@tempd tempd `S24  1 a 6 25 ]
-"350
-[v rotate_sidetop@tempc tempc `S24  1 a 6 19 ]
-"331
-[v rotate_sidetop@tempb tempb `S24  1 a 6 13 ]
-"330
-[v rotate_sidetop@tempa tempa `S24  1 a 6 7 ]
-"348
-[v rotate_sidetop@buf_287 buf `i  1 a 2 5 ]
-"328
-[v rotate_sidetop@buf buf `i  1 a 2 3 ]
-"322
-[v rotate_sidetop@val val `i  1 p 2 0 ]
-"367
-} 0
-"369
-[v _rotate_sidebot rotate_sidebot `(v  1 e 1 0 ]
-{
-[s S24 RGB 6 `i 1 r 2 0 `i 1 g 2 2 `i 1 b 2 4 ]
-"398
-[v rotate_sidebot@tempd tempd `S24  1 a 6 25 ]
-"397
-[v rotate_sidebot@tempc tempc `S24  1 a 6 19 ]
-"378
-[v rotate_sidebot@tempb tempb `S24  1 a 6 13 ]
-"377
-[v rotate_sidebot@tempa tempa `S24  1 a 6 7 ]
-"395
-[v rotate_sidebot@buf_307 buf `i  1 a 2 5 ]
-"375
-[v rotate_sidebot@buf buf `i  1 a 2 3 ]
-"369
-[v rotate_sidebot@val val `i  1 p 2 0 ]
-"414
-} 0
-"135
+"137
 [v _rotate_r rotate_r `(v  1 e 1 0 ]
 {
 [s S24 RGB 6 `i 1 r 2 0 `i 1 g 2 2 `i 1 b 2 4 ]
-"163
-[v rotate_r@tempd tempd `S24  1 a 6 25 ]
+"165
+[v rotate_r@tempd tempd `S24  1 a 6 33 ]
+"164
+[v rotate_r@tempc tempc `S24  1 a 6 27 ]
+"145
+[v rotate_r@tempb tempb `S24  1 a 6 21 ]
+"144
+[v rotate_r@tempa tempa `S24  1 a 6 15 ]
 "162
-[v rotate_r@tempc tempc `S24  1 a 6 19 ]
-"143
-[v rotate_r@tempb tempb `S24  1 a 6 13 ]
+[v rotate_r@buf_207 buf `i  1 a 2 13 ]
 "142
-[v rotate_r@tempa tempa `S24  1 a 6 7 ]
-"160
-[v rotate_r@buf_207 buf `i  1 a 2 5 ]
-"140
-[v rotate_r@buf buf `i  1 a 2 3 ]
-"135
-[v rotate_r@val val `i  1 p 2 0 ]
-"180
+[v rotate_r@buf buf `i  1 a 2 11 ]
+"137
+[v rotate_r@val val `i  1 p 2 8 ]
+"182
 } 0
-"181
+"183
 [v _rotate_l rotate_l `(v  1 e 1 0 ]
 {
 [s S24 RGB 6 `i 1 r 2 0 `i 1 g 2 2 `i 1 b 2 4 ]
-"210
-[v rotate_l@tempd tempd `S24  1 a 6 25 ]
+"212
+[v rotate_l@tempd tempd `S24  1 a 6 33 ]
+"211
+[v rotate_l@tempc tempc `S24  1 a 6 27 ]
+"192
+[v rotate_l@tempb tempb `S24  1 a 6 21 ]
+"191
+[v rotate_l@tempa tempa `S24  1 a 6 15 ]
 "209
-[v rotate_l@tempc tempc `S24  1 a 6 19 ]
-"190
-[v rotate_l@tempb tempb `S24  1 a 6 13 ]
+[v rotate_l@buf_227 buf `i  1 a 2 13 ]
 "189
-[v rotate_l@tempa tempa `S24  1 a 6 7 ]
-"207
-[v rotate_l@buf_227 buf `i  1 a 2 5 ]
-"187
-[v rotate_l@buf buf `i  1 a 2 3 ]
-"181
-[v rotate_l@val val `i  1 p 2 0 ]
-"226
+[v rotate_l@buf buf `i  1 a 2 11 ]
+"183
+[v rotate_l@val val `i  1 p 2 8 ]
+"228
 } 0
-"275
-[v _rotate_bot rotate_bot `(v  1 e 1 0 ]
-{
-[s S24 RGB 6 `i 1 r 2 0 `i 1 g 2 2 `i 1 b 2 4 ]
-"304
-[v rotate_bot@tempd tempd `S24  1 a 6 25 ]
-"303
-[v rotate_bot@tempc tempc `S24  1 a 6 19 ]
-"284
-[v rotate_bot@tempb tempb `S24  1 a 6 13 ]
-"283
-[v rotate_bot@tempa tempa `S24  1 a 6 7 ]
-"301
-[v rotate_bot@buf_267 buf `i  1 a 2 5 ]
-"281
-[v rotate_bot@buf buf `i  1 a 2 3 ]
-"275
-[v rotate_bot@val val `i  1 p 2 0 ]
-"320
-} 0
-"102
+"104
 [v _initial initial `(v  1 e 1 0 ]
 {
-"103
+"105
 [v initial@i i `i  1 a 2 6 ]
-"134
+"136
 } 0
 "15 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -314,7 +226,7 @@
 [v ADC_Read@digital digital `i  1 a 2 4 ]
 "88
 [v ADC_Read@channle channle `i  1 p 2 0 ]
-"100
+"102
 } 0
 "78
 [v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
