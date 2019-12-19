@@ -65,10 +65,16 @@ typedef struct RGB{
 }rgbarray;
 volatile rgbarray rgb[24];
 #define _XTAL_FREQ 20000000
+#define TOP 0
+#define BOT 1
+#define RIGHT 2
+#define LEFT 3
+#define SIDE_TOP 4
+#define SIDE_BOT 5
 #include <xc.h>
 #include <stdio.h>
-volatile int original_r = 0;
-volatile int original_l = 0;
+volatile int original[6];
+//volatile int original_l = 0;
 void ADC_Initialize(void) {
     
     TRISA = 1;		// Set as input port
@@ -79,11 +85,11 @@ void ADC_Initialize(void) {
     ADRESH=0;  			// Flush ADC output Register
     ADRESL=0;
 }
-int ADC_Read()
+int ADC_Read(int channle)
 {
     int digital;
     
-    ADCON0bits.CHS =  0; 
+    ADCON0bits.CHS =  channle; 
     ADCON0bits.GO = 1;
     ADCON0bits.ADON = 1;
     
@@ -98,40 +104,40 @@ void initial(void){
     for(i = 0;i < 4;i++){
         rgb[i].r = 0;
         rgb[i].g = 1;
-        rgb[i].b = 1;
+        rgb[i].b = 1;//red
     }
     for(i = 4;i < 8;i++){
         rgb[i].r = 1;
         rgb[i].g = 0;
-        rgb[i].b = 1;
+        rgb[i].b = 1;//green
     }
     for(i = 8;i < 12;i++){
         rgb[i].r = 1;
         rgb[i].g = 1;
-        rgb[i].b = 0;
+        rgb[i].b = 0;//blue
     }
     for(i = 12;i < 16;i++){
         rgb[i].r = 0;
         rgb[i].g = 1;
-        rgb[i].b = 0;
+        rgb[i].b = 0;//purple
     }
     for(i = 16;i < 20;i++){
         rgb[i].r = 0;
         rgb[i].g = 0;
-        rgb[i].b = 1;
+        rgb[i].b = 1;//yellow
     }
     for(i = 20;i < 24;i++){
         rgb[i].r = 0;
         rgb[i].g = 0;
-        rgb[i].b = 0;
+        rgb[i].b = 0;//white
     }
 }
-void rotate_r(int val){
+void rotate_r(int val){//轉右邊
     if(val > 3){
         val = 3;
     }
-    if(val>original_r){
-        int buf = val-original_r;
+    if(val>original[RIGHT]){
+        int buf = val-original[RIGHT];
         while(buf>0){
             rgbarray tempa = rgb[2];
             rgbarray tempb = rgb[3];
@@ -150,8 +156,8 @@ void rotate_r(int val){
             buf--;
         }
     }
-    else if(original_r>val){
-        int buf = original_r-val;
+    else if(original[RIGHT]>val){
+        int buf = original[RIGHT]-val;
         while(buf>0){
             rgbarray tempc = rgb[14];
             rgbarray tempd = rgb[15];
@@ -172,13 +178,13 @@ void rotate_r(int val){
          
     }
 }
-void rotate_l(int val){
+void rotate_l(int val){//轉左邊
     //used to rotate left line
     if(val > 3){
         val = 3;
     }
-    if(val>original_l){
-        int buf = val-original_l;
+    if(val>original[LEFT]){
+        int buf = val-original[LEFT];
         while(buf>0){
             rgbarray tempa = rgb[0];
             rgbarray tempb = rgb[1];
@@ -197,8 +203,8 @@ void rotate_l(int val){
             buf--;
         }
     }
-    else if(original_l>val){
-        int buf = original_l-val;
+    else if(original[LEFT]>val){
+        int buf = original[LEFT]-val;
         while(buf>0){
             rgbarray tempc = rgb[12];
             rgbarray tempd = rgb[13];
@@ -215,10 +221,198 @@ void rotate_l(int val){
             rgb[0].g = tempc.g;rgb[1].g = tempd.g;
             rgb[0].b = tempc.b;rgb[1].b = tempd.b; 
             buf--;
-        }
-         
+        }        
     }
 }
+
+void rotate_top(int val){//轉上面
+    //used to rotate left line
+    if(val > 3){
+        val = 3;
+    }
+    if(val>original[TOP]){
+        int buf = val-original[TOP];
+        while(buf>0){
+            rgbarray tempa = rgb[0];
+            rgbarray tempb = rgb[3];
+            rgb[0].r = rgb[17].r;rgb[3].r = rgb[16].r;
+            rgb[0].g = rgb[17].g;rgb[3].g = rgb[16].g;
+            rgb[0].b = rgb[17].b;rgb[3].b = rgb[16].b;
+            rgb[17].r = rgb[10].r;rgb[16].r = rgb[9].r;
+            rgb[17].g = rgb[10].g;rgb[16].g = rgb[9].g;
+            rgb[17].b = rgb[10].b;rgb[16].b = rgb[9].b;
+            rgb[10].r = rgb[23].r;rgb[9].r = rgb[22].r;
+            rgb[10].g = rgb[23].g;rgb[9].g = rgb[22].g;
+            rgb[10].b = rgb[23].b;rgb[9].b = rgb[22].b;
+            rgb[23].r = tempa.r;rgb[22].r = tempb.r;
+            rgb[23].g = tempa.g;rgb[22].g = tempb.g;
+            rgb[23].b = tempa.b;rgb[22].b = tempb.b;
+            buf--;
+        }
+    }
+    else if(original[TOP]>val){
+        int buf = original[TOP]-val;
+        while(buf>0){
+            rgbarray tempc = rgb[0];
+            rgbarray tempd = rgb[3];
+            rgb[0].r = rgb[23].r;rgb[3].r = rgb[22].r;
+            rgb[0].g = rgb[23].g;rgb[3].g = rgb[22].g;
+            rgb[0].b = rgb[23].b;rgb[3].b = rgb[22].b;
+            rgb[23].r = rgb[10].r;rgb[22].r = rgb[9].r;
+            rgb[23].g = rgb[10].g;rgb[22].g = rgb[9].g;
+            rgb[23].b = rgb[10].b;rgb[22].b = rgb[9].b;
+            rgb[10].r = rgb[17].r;rgb[9].r = rgb[16].r;
+            rgb[10].g = rgb[17].g;rgb[9].g = rgb[16].g;
+            rgb[10].b = rgb[17].b;rgb[9].b = rgb[16].b;
+            rgb[17].r = tempc.r;rgb[16].r = tempd.r;
+            rgb[17].g = tempc.g;rgb[16].g = tempd.g;
+            rgb[17].b = tempc.b;rgb[16].b = tempd.b; 
+            buf--;
+        }        
+    }
+}
+
+void rotate_bot(int val){//轉上面
+    //used to rotate left line
+    if(val > 3){
+        val = 3;
+    }
+    if(val>original[BOT]){
+        int buf = val-original[BOT];
+        while(buf>0){
+            rgbarray tempa = rgb[1];
+            rgbarray tempb = rgb[2];
+            rgb[1].r = rgb[18].r;rgb[2].r = rgb[19].r;
+            rgb[1].g = rgb[18].g;rgb[2].g = rgb[19].g;
+            rgb[1].b = rgb[18].b;rgb[2].b = rgb[19].b;
+            rgb[18].r = rgb[11].r;rgb[19].r = rgb[8].r;
+            rgb[18].g = rgb[11].g;rgb[19].g = rgb[8].g;
+            rgb[18].b = rgb[11].b;rgb[19].b = rgb[8].b;
+            rgb[11].r = rgb[20].r;rgb[8].r = rgb[21].r;
+            rgb[11].g = rgb[20].g;rgb[8].g = rgb[21].g;
+            rgb[11].b = rgb[20].b;rgb[8].b = rgb[21].b;
+            rgb[20].r = tempa.r;rgb[21].r = tempb.r;
+            rgb[20].g = tempa.g;rgb[21].g = tempb.g;
+            rgb[20].b = tempa.b;rgb[21].b = tempb.b;
+            buf--;
+        }
+    }
+    else if(original[BOT]>val){
+        int buf = original[BOT]-val;
+        while(buf>0){
+            rgbarray tempc = rgb[1];
+            rgbarray tempd = rgb[2];
+            rgb[1].r = rgb[20].r;rgb[2].r = rgb[21].r;
+            rgb[1].g = rgb[20].g;rgb[2].g = rgb[21].g;
+            rgb[1].b = rgb[20].b;rgb[2].b = rgb[21].b;
+            rgb[20].r = rgb[11].r;rgb[21].r = rgb[8].r;
+            rgb[20].g = rgb[11].g;rgb[21].g = rgb[8].g;
+            rgb[20].b = rgb[11].b;rgb[21].b = rgb[8].b;
+            rgb[11].r = rgb[18].r;rgb[8].r = rgb[19].r;
+            rgb[11].g = rgb[18].g;rgb[8].g = rgb[19].g;
+            rgb[11].b = rgb[18].b;rgb[8].b = rgb[19].b;
+            rgb[18].r = tempc.r;rgb[19].r = tempd.r;
+            rgb[18].g = tempc.g;rgb[19].g = tempd.g;
+            rgb[18].b = tempc.b;rgb[19].b = tempd.b; 
+            buf--;
+        }        
+    }
+}
+
+void rotate_sidetop(int val){//轉上面
+    //used to rotate left line
+    if(val > 3){
+        val = 3;
+    }
+    if(val>original[SIDE_TOP]){
+        int buf = val-original[SIDE_TOP];
+        while(buf>0){
+            rgbarray tempa = rgb[4];
+            rgbarray tempb = rgb[7];
+            rgb[4].r = rgb[16].r;rgb[7].r = rgb[19].r;
+            rgb[4].g = rgb[16].g;rgb[7].g = rgb[19].g;
+            rgb[4].b = rgb[16].b;rgb[7].b = rgb[19].b;
+            rgb[16].r = rgb[14].r;rgb[19].r = rgb[13].r;
+            rgb[16].g = rgb[14].g;rgb[19].g = rgb[13].g;
+            rgb[16].b = rgb[14].b;rgb[19].b = rgb[13].b;
+            rgb[14].r = rgb[20].r;rgb[13].r = rgb[23].r;
+            rgb[14].g = rgb[20].g;rgb[13].g = rgb[23].g;
+            rgb[14].b = rgb[20].b;rgb[13].b = rgb[23].b;
+            rgb[20].r = tempa.r;rgb[23].r = tempb.r;
+            rgb[20].g = tempa.g;rgb[23].g = tempb.g;
+            rgb[20].b = tempa.b;rgb[23].b = tempb.b;
+            buf--;
+        }
+    }
+    else if(original[SIDE_TOP]>val){
+        int buf = original[SIDE_TOP]-val;
+        while(buf>0){
+            rgbarray tempc = rgb[4];
+            rgbarray tempd = rgb[7];
+            rgb[4].r = rgb[20].r;rgb[7].r = rgb[23].r;
+            rgb[4].g = rgb[20].g;rgb[7].g = rgb[23].g;
+            rgb[4].b = rgb[20].b;rgb[7].b = rgb[23].b;
+            rgb[20].r = rgb[14].r;rgb[23].r = rgb[13].r;
+            rgb[20].g = rgb[14].g;rgb[23].g = rgb[13].g;
+            rgb[20].b = rgb[14].b;rgb[23].b = rgb[13].b;
+            rgb[14].r = rgb[16].r;rgb[13].r = rgb[19].r;
+            rgb[14].g = rgb[16].g;rgb[13].g = rgb[19].g;
+            rgb[14].b = rgb[16].b;rgb[13].b = rgb[19].b;
+            rgb[16].r = tempc.r;rgb[19].r = tempd.r;
+            rgb[16].g = tempc.g;rgb[19].g = tempd.g;
+            rgb[16].b = tempc.b;rgb[19].b = tempd.b; 
+            buf--;
+        }        
+    }
+}
+
+void rotate_sidebot(int val){//轉上面
+    //used to rotate left line
+    if(val > 3){
+        val = 3;
+    }
+    if(val>original[SIDE_BOT]){
+        int buf = val-original[SIDE_BOT];
+        while(buf>0){
+            rgbarray tempa = rgb[5];
+            rgbarray tempb = rgb[6];
+            rgb[5].r = rgb[17].r;rgb[6].r = rgb[18].r;
+            rgb[5].g = rgb[17].g;rgb[6].g = rgb[18].g;
+            rgb[5].b = rgb[17].b;rgb[6].b = rgb[18].b;
+            rgb[17].r = rgb[15].r;rgb[18].r = rgb[12].r;
+            rgb[17].g = rgb[15].g;rgb[18].g = rgb[12].g;
+            rgb[17].b = rgb[15].b;rgb[18].b = rgb[12].b;
+            rgb[15].r = rgb[21].r;rgb[12].r = rgb[22].r;
+            rgb[15].g = rgb[21].g;rgb[12].g = rgb[22].g;
+            rgb[15].b = rgb[21].b;rgb[12].b = rgb[22].b;
+            rgb[21].r = tempa.r;rgb[22].r = tempb.r;
+            rgb[21].g = tempa.g;rgb[22].g = tempb.g;
+            rgb[21].b = tempa.b;rgb[22].b = tempb.b;
+            buf--;
+        }
+    }
+    else if(original[SIDE_BOT]>val){
+        int buf = original[SIDE_BOT]-val;
+        while(buf>0){
+            rgbarray tempc = rgb[5];
+            rgbarray tempd = rgb[6];
+            rgb[5].r = rgb[21].r;rgb[6].r = rgb[22].r;
+            rgb[5].g = rgb[21].g;rgb[6].g = rgb[22].g;
+            rgb[5].b = rgb[21].b;rgb[6].b = rgb[22].b;
+            rgb[21].r = rgb[15].r;rgb[22].r = rgb[12].r;
+            rgb[21].g = rgb[15].g;rgb[22].g = rgb[12].g;
+            rgb[21].b = rgb[15].b;rgb[22].b = rgb[12].b;
+            rgb[15].r = rgb[17].r;rgb[12].r = rgb[18].r;
+            rgb[15].g = rgb[17].g;rgb[12].g = rgb[18].g;
+            rgb[15].b = rgb[17].b;rgb[12].b = rgb[18].b;
+            rgb[17].r = tempc.r;rgb[18].r = tempd.r;
+            rgb[17].g = tempc.g;rgb[18].g = tempd.g;
+            rgb[17].b = tempc.b;rgb[18].b = tempd.b; 
+            buf--;
+        }        
+    }
+}
+
 void main(void) {
     initial();
     ADC_Initialize();
@@ -226,15 +420,46 @@ void main(void) {
     LATD = 0;
     LATDbits.LATD3 = 1;
     int i = 0;
+    int j;
+    for(j=0; j<6; j++){
+        int init_adc = ADC_Read(j);
+        original[j] = init_adc/300;
+    }
+    int turn = 0;
     while(1){
-        int val = ADC_Read();
-        rotate_r(val/300);
-        original_r = val/300;
+        //for(turn=0; turn<6; turn++){
+            int val = ADC_Read(turn);
+            val = val/300;
+            if(turn == TOP && val != original[TOP]) {
+                rotate_top(val);
+                original[TOP] = val;
+            }
+            else if(turn == BOT && val != original[BOT]) {
+                rotate_bot(val);
+                original[BOT] = val;
+            }
+            else if(turn == RIGHT && val != original[RIGHT]) {
+                rotate_r(val);
+                original[RIGHT] = val;
+            }    
+            else if(turn == LEFT && val != original[LEFT]) {
+                rotate_l(val);
+                original[LEFT] = val;
+            }
+            else if(turn == SIDE_TOP && val != original[SIDE_TOP]) {
+                rotate_sidetop(val);
+                original[SIDE_TOP] = val;
+            }
+            else if(turn == SIDE_BOT && val != original[SIDE_BOT]) {
+                rotate_sidebot(val);
+                original[SIDE_BOT] = val;
+            }
+        //}
         //need to add everything
         LATDbits.LATD0 = rgb[i].r;
         LATDbits.LATD1 = rgb[i].g;
         LATDbits.LATD2 = rgb[i].b;
-        __delay_us(50);
+        //__delay_us(50);
         LATDbits.LATD0 = 1;
         LATDbits.LATD1 = 1;
         LATDbits.LATD2 = 1;
@@ -247,6 +472,8 @@ void main(void) {
         if(i == 4){
             i = 0;
         }
+        turn++;
+        if(turn == 6) turn = 0;
     }
     return;
 }

@@ -75,6 +75,12 @@ typedef struct RGB{
 volatile rgbarray rgb[24];
 
 
+
+
+
+
+
+
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -4580,7 +4586,7 @@ extern __attribute__((nonreentrant)) void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __attribute__((nonreentrant)) void _delay3(unsigned char);
 # 32 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\xc.h" 2 3
-# 68 "newmain.c" 2
+# 74 "newmain.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdio.h" 1 3
 # 24 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.10\\pic\\include\\c99\\stdio.h" 3
@@ -4720,9 +4726,10 @@ char *ctermid(char *);
 
 
 char *tempnam(const char *, const char *);
-# 69 "newmain.c" 2
+# 75 "newmain.c" 2
 
-volatile int original_r = 0;
+volatile int original[6];
+
 void ADC_Initialize(void) {
 
     TRISA = 1;
@@ -4733,11 +4740,11 @@ void ADC_Initialize(void) {
     ADRESH=0;
     ADRESL=0;
 }
-int ADC_Read()
+int ADC_Read(int channle)
 {
     int digital;
 
-    ADCON0bits.CHS = 0;
+    ADCON0bits.CHS = channle;
     ADCON0bits.GO = 1;
     ADCON0bits.ADON = 1;
 
@@ -4784,8 +4791,8 @@ void rotate_r(int val){
     if(val > 3){
         val = 3;
     }
-    if(val>original_r){
-        int buf = val-original_r;
+    if(val>original[2]){
+        int buf = val-original[2];
         while(buf>0){
             rgbarray tempa = rgb[2];
             rgbarray tempb = rgb[3];
@@ -4804,9 +4811,8 @@ void rotate_r(int val){
             buf--;
         }
     }
-    else if(original_r>val){
-        int buf = original_r-val;
-# 172 "newmain.c"
+    else if(original[2]>val){
+        int buf = original[2]-val;
         while(buf>0){
             rgbarray tempc = rgb[14];
             rgbarray tempd = rgb[15];
@@ -4827,6 +4833,241 @@ void rotate_r(int val){
 
     }
 }
+void rotate_l(int val){
+
+    if(val > 3){
+        val = 3;
+    }
+    if(val>original[3]){
+        int buf = val-original[3];
+        while(buf>0){
+            rgbarray tempa = rgb[0];
+            rgbarray tempb = rgb[1];
+            rgb[0].r = rgb[4].r;rgb[1].r = rgb[5].r;
+            rgb[0].g = rgb[4].g;rgb[1].g = rgb[5].g;
+            rgb[0].b = rgb[4].b;rgb[1].b = rgb[5].b;
+            rgb[4].r = rgb[8].r;rgb[5].r = rgb[9].r;
+            rgb[4].g = rgb[8].g;rgb[5].g = rgb[9].g;
+            rgb[4].b = rgb[8].b;rgb[5].b = rgb[9].b;
+            rgb[8].r = rgb[12].r;rgb[9].r = rgb[13].r;
+            rgb[8].g = rgb[12].g;rgb[9].g = rgb[13].g;
+            rgb[8].b = rgb[12].b;rgb[9].b = rgb[13].b;
+            rgb[12].r = tempa.r;rgb[13].r = tempb.r;
+            rgb[12].g = tempa.g;rgb[13].g = tempb.g;
+            rgb[12].b = tempa.b;rgb[13].b = tempb.b;
+            buf--;
+        }
+    }
+    else if(original[3]>val){
+        int buf = original[3]-val;
+        while(buf>0){
+            rgbarray tempc = rgb[12];
+            rgbarray tempd = rgb[13];
+            rgb[12].r = rgb[8].r;rgb[13].r = rgb[9].r;
+            rgb[12].g = rgb[8].g;rgb[13].g = rgb[9].g;
+            rgb[12].b = rgb[8].b;rgb[13].b = rgb[9].b;
+            rgb[8].r = rgb[4].r;rgb[9].r = rgb[5].r;
+            rgb[8].g = rgb[4].g;rgb[9].g = rgb[5].g;
+            rgb[8].b = rgb[4].b;rgb[9].b = rgb[5].b;
+            rgb[4].r = rgb[0].r;rgb[5].r = rgb[1].r;
+            rgb[4].g = rgb[0].g;rgb[5].g = rgb[1].g;
+            rgb[4].b = rgb[0].b;rgb[5].b = rgb[1].b;
+            rgb[0].r = tempc.r;rgb[1].r = tempd.r;
+            rgb[0].g = tempc.g;rgb[1].g = tempd.g;
+            rgb[0].b = tempc.b;rgb[1].b = tempd.b;
+            buf--;
+        }
+    }
+}
+
+void rotate_top(int val){
+
+    if(val > 3){
+        val = 3;
+    }
+    if(val>original[0]){
+        int buf = val-original[0];
+        while(buf>0){
+            rgbarray tempa = rgb[0];
+            rgbarray tempb = rgb[3];
+            rgb[0].r = rgb[17].r;rgb[3].r = rgb[16].r;
+            rgb[0].g = rgb[17].g;rgb[3].g = rgb[16].g;
+            rgb[0].b = rgb[17].b;rgb[3].b = rgb[16].b;
+            rgb[17].r = rgb[10].r;rgb[16].r = rgb[9].r;
+            rgb[17].g = rgb[10].g;rgb[16].g = rgb[9].g;
+            rgb[17].b = rgb[10].b;rgb[16].b = rgb[9].b;
+            rgb[10].r = rgb[23].r;rgb[9].r = rgb[22].r;
+            rgb[10].g = rgb[23].g;rgb[9].g = rgb[22].g;
+            rgb[10].b = rgb[23].b;rgb[9].b = rgb[22].b;
+            rgb[23].r = tempa.r;rgb[22].r = tempb.r;
+            rgb[23].g = tempa.g;rgb[22].g = tempb.g;
+            rgb[23].b = tempa.b;rgb[22].b = tempb.b;
+            buf--;
+        }
+    }
+    else if(original[0]>val){
+        int buf = original[0]-val;
+        while(buf>0){
+            rgbarray tempc = rgb[0];
+            rgbarray tempd = rgb[3];
+            rgb[0].r = rgb[23].r;rgb[3].r = rgb[22].r;
+            rgb[0].g = rgb[23].g;rgb[3].g = rgb[22].g;
+            rgb[0].b = rgb[23].b;rgb[3].b = rgb[22].b;
+            rgb[23].r = rgb[10].r;rgb[22].r = rgb[9].r;
+            rgb[23].g = rgb[10].g;rgb[22].g = rgb[9].g;
+            rgb[23].b = rgb[10].b;rgb[22].b = rgb[9].b;
+            rgb[10].r = rgb[17].r;rgb[9].r = rgb[16].r;
+            rgb[10].g = rgb[17].g;rgb[9].g = rgb[16].g;
+            rgb[10].b = rgb[17].b;rgb[9].b = rgb[16].b;
+            rgb[17].r = tempc.r;rgb[16].r = tempd.r;
+            rgb[17].g = tempc.g;rgb[16].g = tempd.g;
+            rgb[17].b = tempc.b;rgb[16].b = tempd.b;
+            buf--;
+        }
+    }
+}
+
+void rotate_bot(int val){
+
+    if(val > 3){
+        val = 3;
+    }
+    if(val>original[1]){
+        int buf = val-original[1];
+        while(buf>0){
+            rgbarray tempa = rgb[1];
+            rgbarray tempb = rgb[2];
+            rgb[1].r = rgb[18].r;rgb[2].r = rgb[19].r;
+            rgb[1].g = rgb[18].g;rgb[2].g = rgb[19].g;
+            rgb[1].b = rgb[18].b;rgb[2].b = rgb[19].b;
+            rgb[18].r = rgb[11].r;rgb[19].r = rgb[8].r;
+            rgb[18].g = rgb[11].g;rgb[19].g = rgb[8].g;
+            rgb[18].b = rgb[11].b;rgb[19].b = rgb[8].b;
+            rgb[11].r = rgb[20].r;rgb[8].r = rgb[21].r;
+            rgb[11].g = rgb[20].g;rgb[8].g = rgb[21].g;
+            rgb[11].b = rgb[20].b;rgb[8].b = rgb[21].b;
+            rgb[20].r = tempa.r;rgb[21].r = tempb.r;
+            rgb[20].g = tempa.g;rgb[21].g = tempb.g;
+            rgb[20].b = tempa.b;rgb[21].b = tempb.b;
+            buf--;
+        }
+    }
+    else if(original[1]>val){
+        int buf = original[1]-val;
+        while(buf>0){
+            rgbarray tempc = rgb[1];
+            rgbarray tempd = rgb[2];
+            rgb[1].r = rgb[20].r;rgb[2].r = rgb[21].r;
+            rgb[1].g = rgb[20].g;rgb[2].g = rgb[21].g;
+            rgb[1].b = rgb[20].b;rgb[2].b = rgb[21].b;
+            rgb[20].r = rgb[11].r;rgb[21].r = rgb[8].r;
+            rgb[20].g = rgb[11].g;rgb[21].g = rgb[8].g;
+            rgb[20].b = rgb[11].b;rgb[21].b = rgb[8].b;
+            rgb[11].r = rgb[18].r;rgb[8].r = rgb[19].r;
+            rgb[11].g = rgb[18].g;rgb[8].g = rgb[19].g;
+            rgb[11].b = rgb[18].b;rgb[8].b = rgb[19].b;
+            rgb[18].r = tempc.r;rgb[19].r = tempd.r;
+            rgb[18].g = tempc.g;rgb[19].g = tempd.g;
+            rgb[18].b = tempc.b;rgb[19].b = tempd.b;
+            buf--;
+        }
+    }
+}
+
+void rotate_sidetop(int val){
+
+    if(val > 3){
+        val = 3;
+    }
+    if(val>original[4]){
+        int buf = val-original[4];
+        while(buf>0){
+            rgbarray tempa = rgb[4];
+            rgbarray tempb = rgb[7];
+            rgb[4].r = rgb[16].r;rgb[7].r = rgb[19].r;
+            rgb[4].g = rgb[16].g;rgb[7].g = rgb[19].g;
+            rgb[4].b = rgb[16].b;rgb[7].b = rgb[19].b;
+            rgb[16].r = rgb[14].r;rgb[19].r = rgb[13].r;
+            rgb[16].g = rgb[14].g;rgb[19].g = rgb[13].g;
+            rgb[16].b = rgb[14].b;rgb[19].b = rgb[13].b;
+            rgb[14].r = rgb[20].r;rgb[13].r = rgb[23].r;
+            rgb[14].g = rgb[20].g;rgb[13].g = rgb[23].g;
+            rgb[14].b = rgb[20].b;rgb[13].b = rgb[23].b;
+            rgb[20].r = tempa.r;rgb[23].r = tempb.r;
+            rgb[20].g = tempa.g;rgb[23].g = tempb.g;
+            rgb[20].b = tempa.b;rgb[23].b = tempb.b;
+            buf--;
+        }
+    }
+    else if(original[4]>val){
+        int buf = original[4]-val;
+        while(buf>0){
+            rgbarray tempc = rgb[4];
+            rgbarray tempd = rgb[7];
+            rgb[4].r = rgb[20].r;rgb[7].r = rgb[23].r;
+            rgb[4].g = rgb[20].g;rgb[7].g = rgb[23].g;
+            rgb[4].b = rgb[20].b;rgb[7].b = rgb[23].b;
+            rgb[20].r = rgb[14].r;rgb[23].r = rgb[13].r;
+            rgb[20].g = rgb[14].g;rgb[23].g = rgb[13].g;
+            rgb[20].b = rgb[14].b;rgb[23].b = rgb[13].b;
+            rgb[14].r = rgb[16].r;rgb[13].r = rgb[19].r;
+            rgb[14].g = rgb[16].g;rgb[13].g = rgb[19].g;
+            rgb[14].b = rgb[16].b;rgb[13].b = rgb[19].b;
+            rgb[16].r = tempc.r;rgb[19].r = tempd.r;
+            rgb[16].g = tempc.g;rgb[19].g = tempd.g;
+            rgb[16].b = tempc.b;rgb[19].b = tempd.b;
+            buf--;
+        }
+    }
+}
+
+void rotate_sidebot(int val){
+
+    if(val > 3){
+        val = 3;
+    }
+    if(val>original[5]){
+        int buf = val-original[5];
+        while(buf>0){
+            rgbarray tempa = rgb[5];
+            rgbarray tempb = rgb[6];
+            rgb[5].r = rgb[17].r;rgb[6].r = rgb[18].r;
+            rgb[5].g = rgb[17].g;rgb[6].g = rgb[18].g;
+            rgb[5].b = rgb[17].b;rgb[6].b = rgb[18].b;
+            rgb[17].r = rgb[15].r;rgb[18].r = rgb[12].r;
+            rgb[17].g = rgb[15].g;rgb[18].g = rgb[12].g;
+            rgb[17].b = rgb[15].b;rgb[18].b = rgb[12].b;
+            rgb[15].r = rgb[21].r;rgb[12].r = rgb[22].r;
+            rgb[15].g = rgb[21].g;rgb[12].g = rgb[22].g;
+            rgb[15].b = rgb[21].b;rgb[12].b = rgb[22].b;
+            rgb[21].r = tempa.r;rgb[22].r = tempb.r;
+            rgb[21].g = tempa.g;rgb[22].g = tempb.g;
+            rgb[21].b = tempa.b;rgb[22].b = tempb.b;
+            buf--;
+        }
+    }
+    else if(original[5]>val){
+        int buf = original[5]-val;
+        while(buf>0){
+            rgbarray tempc = rgb[5];
+            rgbarray tempd = rgb[6];
+            rgb[5].r = rgb[21].r;rgb[6].r = rgb[22].r;
+            rgb[5].g = rgb[21].g;rgb[6].g = rgb[22].g;
+            rgb[5].b = rgb[21].b;rgb[6].b = rgb[22].b;
+            rgb[21].r = rgb[15].r;rgb[22].r = rgb[12].r;
+            rgb[21].g = rgb[15].g;rgb[22].g = rgb[12].g;
+            rgb[21].b = rgb[15].b;rgb[22].b = rgb[12].b;
+            rgb[15].r = rgb[17].r;rgb[12].r = rgb[18].r;
+            rgb[15].g = rgb[17].g;rgb[12].g = rgb[18].g;
+            rgb[15].b = rgb[17].b;rgb[12].b = rgb[18].b;
+            rgb[17].r = tempc.r;rgb[18].r = tempd.r;
+            rgb[17].g = tempc.g;rgb[18].g = tempd.g;
+            rgb[17].b = tempc.b;rgb[18].b = tempd.b;
+            buf--;
+        }
+    }
+}
+
 void main(void) {
     initial();
     ADC_Initialize();
@@ -4834,14 +5075,46 @@ void main(void) {
     LATD = 0;
     LATDbits.LATD3 = 1;
     int i = 0;
+    int j;
+    for(j=0; j<6; j++){
+        int init_adc = ADC_Read(j);
+        original[j] = init_adc/300;
+    }
+    int turn = 0;
     while(1){
-        int val = ADC_Read();
-        rotate_r(val/300);
-        original_r = val/300;
+
+            int val = ADC_Read(turn);
+            val = val/300;
+            if(turn == 0 && val != original[0]) {
+                rotate_top(val);
+                original[0] = val;
+            }
+            else if(turn == 1 && val != original[1]) {
+                rotate_bot(val);
+                original[1] = val;
+            }
+            else if(turn == 2 && val != original[2]) {
+                rotate_r(val);
+                original[2] = val;
+            }
+            else if(turn == 3 && val != original[3]) {
+                rotate_l(val);
+                original[3] = val;
+            }
+            else if(turn == 4 && val != original[4]) {
+                rotate_sidetop(val);
+                original[4] = val;
+            }
+            else if(turn == 5 && val != original[5]) {
+                rotate_sidebot(val);
+                original[5] = val;
+            }
+
+
         LATDbits.LATD0 = rgb[i].r;
         LATDbits.LATD1 = rgb[i].g;
         LATDbits.LATD2 = rgb[i].b;
-        _delay((unsigned long)((50)*(20000000/4000000.0)));
+
         LATDbits.LATD0 = 1;
         LATDbits.LATD1 = 1;
         LATDbits.LATD2 = 1;
@@ -4854,6 +5127,8 @@ void main(void) {
         if(i == 4){
             i = 0;
         }
+        turn++;
+        if(turn == 6) turn = 0;
     }
     return;
 }

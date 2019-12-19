@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v2.10\pic\dat\en_msgs.txt \
   -cs -h+dist/default/debug\testt.X.debug.sym \
   --cmf=dist/default/debug\testt.X.debug.cmf -z -Q18F4520 \
-  -oC:\Users\User\AppData\Local\Temp\sjg8.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\user\AppData\Local\Temp\segg.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/debug/testt.X.debug.map -E1 -ver=XC8 --acfsm=1493 \
   -ASTACK=0190h-05F3h -pstack=STACK -ACODE=00h-07DBFh -ACONST=00h-07DBFh \
   -ASMALLCONST=0600h-06FFhx119,07D00h-07DBFh -AMEDIUMCONST=0600h-07DBFh \
@@ -23,7 +23,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\User\AppData\Local\Temp\sjg8.o \
+  C:\Users\user\AppData\Local\Temp\segg.o \
   dist/default/debug\testt.X.debug.o 
 
 Object code version is 3.11
@@ -36,36 +36,46 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\User\AppData\Local\Temp\sjg8.o
+C:\Users\user\AppData\Local\Temp\segg.o
                 init                                  0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
 dist/default/debug\testt.X.debug.o
-                text6                              74D2     74D2       1C     3A69       0
-                text5                              7514     7514       36     3A8A       0
-                text4                              754A     754A       C4     3AA5       0
-                text3                              74EE     74EE       26     3A77       0
-                text2                              79FE     79FE      3C2     3CFF       0
-                text1                              7770     7770      28E     3BB8       0
-                text0                              760E     760E      162     3B07       0
-                cstackCOMRAM                          1        1       2E        1       1
+                text11                             65DA     65DA       1C     32ED       0
+                text10                             663A     663A       44     331D       0
+                text9                              667E     667E       C4     333F       0
+                text8                              6614     6614       26     330A       0
+                text7                              79FE     79FE      3C2     3CFF       0
+                text6                              6742     6742      28E     33A1       0
+                text5                              69D0     69D0      28E     34E8       0
+                text4                              6C5E     6C5E      28E     362F       0
+                text3                              6EEC     6EEC      28E     3776       0
+                text2                              717A     717A      28E     38BD       0
+                text1                              7408     7408      28E     3A04       0
+                text0                              7696     7696      368     3B4B       0
+                cstackCOMRAM                          1        1       2C        1       1
                 bssBANK1                            100      100       90      100       1
-                bssCOMRAM                            2F       2F        2        1       1
-                cinit                              74BC     74BC       16     3A5E       0
+                bssCOMRAM                            2D       2D        C        1       1
+                cinit                              65F6     65F6       1E     32FB       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
 
         CLASS   CODE           
                 init                                  0        0        4         0
-                text6                              74D2     74D2       1C         0
-                text5                              7514     7514       36         0
-                text4                              754A     754A       C4         0
-                text3                              74EE     74EE       26         0
-                text2                              79FE     79FE      3C2         0
-                text1                              7770     7770      28E         0
-                text0                              760E     760E      162         0
-                cinit                              74BC     74BC       16         0
+                text11                             65DA     65DA       1C         0
+                text10                             663A     663A       44         0
+                text9                              667E     667E       C4         0
+                text8                              6614     6614       26         0
+                text7                              79FE     79FE      3C2         0
+                text6                              6742     6742      28E         0
+                text5                              69D0     69D0      28E         0
+                text4                              6C5E     6C5E      28E         0
+                text3                              6EEC     6EEC      28E         0
+                text2                              717A     717A      28E         0
+                text1                              7408     7408      28E         0
+                text0                              7696     7696      368         0
+                cinit                              65F6     65F6       1E         0
 
         CLASS   CONST          
 
@@ -74,8 +84,8 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   MEDIUMCONST    
 
         CLASS   COMRAM         
-                cstackCOMRAM                          1        1       2E         1
-                bssCOMRAM                            2F       2F        2         1
+                cstackCOMRAM                          1        1       2C         1
+                bssCOMRAM                            2D       2D        C         1
 
         CLASS   ABS1           
 
@@ -113,16 +123,21 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
-                cstackCOMRAM                   000001  000030  000031         1       1  COMRAM  
+                cstackCOMRAM                   000001  000038  000039         1       1  COMRAM  
                 bssBANK1                       000100  000090  000190       100       1  BANK1   
-                cinit                          0074BC  000016  0074D2      3A5E       0  CODE    
-                text6                          0074D2  00001C  0074EE      3A69       0  CODE    
-                text3                          0074EE  000026  007514      3A77       0  CODE    
-                text5                          007514  000036  00754A      3A8A       0  CODE    
-                text4                          00754A  0000C4  00760E      3AA5       0  CODE    
-                text0                          00760E  000162  007770      3B07       0  CODE    
-                text1                          007770  00028E  0079FE      3BB8       0  CODE    
-                text2                          0079FE  0003C2  007DC0      3CFF       0  CODE    
+                text11                         0065DA  00001C  0065F6      32ED       0  CODE    
+                cinit                          0065F6  00001E  006614      32FB       0  CODE    
+                text8                          006614  000026  00663A      330A       0  CODE    
+                text10                         00663A  000044  00667E      331D       0  CODE    
+                text9                          00667E  0000C4  006742      333F       0  CODE    
+                text6                          006742  00028E  0069D0      33A1       0  CODE    
+                text5                          0069D0  00028E  006C5E      34E8       0  CODE    
+                text4                          006C5E  00028E  006EEC      362F       0  CODE    
+                text3                          006EEC  00028E  00717A      3776       0  CODE    
+                text2                          00717A  00028E  007408      38BD       0  CODE    
+                text1                          007408  00028E  007696      3A04       0  CODE    
+                text0                          007696  000368  0079FE      3B4B       0  CODE    
+                text7                          0079FE  0003C2  007DC0      3CFF       0  CODE    
                 idloc                          200000  000008  200008    200000       0  IDLOC   
                 config                         300000  00000E  30000E    300000       0  CONFIG  
 
@@ -136,13 +151,13 @@ UNUSED ADDRESS RANGES
         BANK3            000300-0003FF              100
         BANK4            000400-0004FF              100
         BANK5            000500-0005F3               F4
-        BIGRAM           000031-0000FF               CF
+        BIGRAM           000039-0000FF               C7
                          000190-0005F3              464
-        CODE             000004-0074BB             74B8
-        COMRAM           000031-00007F               4F
-        CONST            000004-0074BB             74B8
+        CODE             000004-0065D9             65D6
+        COMRAM           000039-00007F               47
+        CONST            000004-0065D9             65D6
         EEDATA           F00000-F000FF              100
-        MEDIUMCONST      000600-0074BB             6EBC
+        MEDIUMCONST      000600-0065D9             5FDA
         RAM              000080-0000FF               80
                          000190-0005F3              100
         SFR              000F80-000F9B               1C
@@ -151,7 +166,7 @@ UNUSED ADDRESS RANGES
                          000FE0-000FE2                3
                          000FE8-000FEA                3
                          000FF0-000FFC                D
-        SMALLCONST       000600-0074BB              100
+        SMALLCONST       000600-0065D9              100
         STACK            000190-0005F3              464
 
                                   Symbol Table
@@ -159,13 +174,14 @@ UNUSED ADDRESS RANGES
 ?_ADC_Read               cstackCOMRAM 000001
 ?___awdiv                cstackCOMRAM 000001
 ?___wmul                 cstackCOMRAM 000001
+ADC_Read@channle         cstackCOMRAM 000001
 ADC_Read@digital         cstackCOMRAM 000005
 _ADCON0bits              (abs)        000FC2
 _ADCON1                  (abs)        000FC1
 _ADCON2                  (abs)        000FC0
 _ADCON2bits              (abs)        000FC0
-_ADC_Initialize          text6        0074D2
-_ADC_Read                text5        007514
+_ADC_Initialize          text11       0065DA
+_ADC_Read                text10       00663A
 _ADFM                    (abs)        007E07
 _ADRESH                  (abs)        000FC4
 _ADRESL                  (abs)        000FC3
@@ -266,11 +282,16 @@ __Htemp                  temp         000000
 __Htext                  text         000000
 __Htext0                 text0        000000
 __Htext1                 text1        000000
+__Htext10                text10       000000
+__Htext11                text11       000000
 __Htext2                 text2        000000
 __Htext3                 text3        000000
 __Htext4                 text4        000000
 __Htext5                 text5        000000
 __Htext6                 text6        000000
+__Htext7                 text7        000000
+__Htext8                 text8        000000
+__Htext9                 text9        000000
 __LRAM                   (abs)        000001
 __Labs1                  abs1         000000
 __Lbank0                 bank0        000000
@@ -331,15 +352,20 @@ __Ltemp                  temp         000000
 __Ltext                  text         000000
 __Ltext0                 text0        000000
 __Ltext1                 text1        000000
+__Ltext10                text10       000000
+__Ltext11                text11       000000
 __Ltext2                 text2        000000
 __Ltext3                 text3        000000
 __Ltext4                 text4        000000
 __Ltext5                 text5        000000
 __Ltext6                 text6        000000
+__Ltext7                 text7        000000
+__Ltext8                 text8        000000
+__Ltext9                 text9        000000
 __S0                     (abs)        30000E
 __S1                     (abs)        000190
 __S2                     (abs)        000000
-___awdiv                 text4        00754A
+___awdiv                 text9        00667E
 ___awdiv@counter         cstackCOMRAM 000005
 ___awdiv@dividend        cstackCOMRAM 000001
 ___awdiv@divisor         cstackCOMRAM 000003
@@ -350,33 +376,43 @@ ___intlo_sp              stack        000000
 ___param_bank            (abs)        000000
 ___rparam_used           (abs)        000001
 ___sp                    stack        000000
-___wmul                  text3        0074EE
+___wmul                  text8        006614
 ___wmul@multiplicand     cstackCOMRAM 000003
 ___wmul@multiplier       cstackCOMRAM 000001
 ___wmul@product          cstackCOMRAM 000005
 __accesstop              (abs)        000080
 __activetblptr           (abs)        000000
-__end_of_ADC_Initialize  text6        0074EE
-__end_of_ADC_Read        text5        00754A
-__end_of___awdiv         text4        00760E
-__end_of___wmul          text3        007514
-__end_of__initialization cinit        0074CC
-__end_of_initial         text2        007DC0
-__end_of_main            text0        007770
-__end_of_rotate_r        text1        0079FE
-__initialization         cinit        0074BC
+__end_of_ADC_Initialize  text11       0065F6
+__end_of_ADC_Read        text10       00667E
+__end_of___awdiv         text9        006742
+__end_of___wmul          text8        00663A
+__end_of__initialization cinit        00660E
+__end_of_initial         text7        007DC0
+__end_of_main            text0        0079FE
+__end_of_rotate_bot      text6        0069D0
+__end_of_rotate_l        text5        006C5E
+__end_of_rotate_r        text4        006EEC
+__end_of_rotate_sidebot  text3        00717A
+__end_of_rotate_sidetop  text2        007408
+__end_of_rotate_top      text1        007696
+__initialization         cinit        0065F6
 __mediumconst            mediumconst  000000
 __pbssBANK1              bssBANK1     000100
-__pbssCOMRAM             bssCOMRAM    00002F
-__pcinit                 cinit        0074BC
+__pbssCOMRAM             bssCOMRAM    00002D
+__pcinit                 cinit        0065F6
 __pcstackCOMRAM          cstackCOMRAM 000001
-__ptext0                 text0        00760E
-__ptext1                 text1        007770
-__ptext2                 text2        0079FE
-__ptext3                 text3        0074EE
-__ptext4                 text4        00754A
-__ptext5                 text5        007514
-__ptext6                 text6        0074D2
+__ptext0                 text0        007696
+__ptext1                 text1        007408
+__ptext10                text10       00663A
+__ptext11                text11       0065DA
+__ptext2                 text2        00717A
+__ptext3                 text3        006EEC
+__ptext4                 text4        006C5E
+__ptext5                 text5        0069D0
+__ptext6                 text6        006742
+__ptext7                 text7        0079FE
+__ptext8                 text8        006614
+__ptext9                 text9        00667E
 __ramtop                 ramtop       000600
 __size_of_ADC_Initialize (abs)        000000
 __size_of_ADC_Read       (abs)        000000
@@ -384,46 +420,97 @@ __size_of___awdiv        (abs)        000000
 __size_of___wmul         (abs)        000000
 __size_of_initial        (abs)        000000
 __size_of_main           (abs)        000000
+__size_of_rotate_bot     (abs)        000000
+__size_of_rotate_l       (abs)        000000
 __size_of_rotate_r       (abs)        000000
+__size_of_rotate_sidebot (abs)        000000
+__size_of_rotate_sidetop (abs)        000000
+__size_of_rotate_top     (abs)        000000
 __smallconst             smallconst   000000
-_initial                 text2        0079FE
-_main                    text0        00760E
-_original_r              bssCOMRAM    00002F
+_initial                 text7        0079FE
+_main                    text0        007696
+_original                bssCOMRAM    00002D
 _rgb                     bssBANK1     000100
-_rotate_r                text1        007770
-end_of_initialization    cinit        0074CC
+_rotate_bot              text6        006742
+_rotate_l                text5        0069D0
+_rotate_r                text4        006C5E
+_rotate_sidebot          text3        006EEC
+_rotate_sidetop          text2        00717A
+_rotate_top              text1        007408
+end_of_initialization    cinit        00660E
 initial@i                cstackCOMRAM 000007
 intlevel0                text         000000
 intlevel1                text         000000
 intlevel2                text         000000
 intlevel3                text         000000
-main@i                   cstackCOMRAM 00002D
-main@temp                cstackCOMRAM 000029
+main@i                   cstackCOMRAM 000027
+main@init_adc            cstackCOMRAM 000021
+main@j                   cstackCOMRAM 000025
+main@temp                cstackCOMRAM 000023
+main@turn                cstackCOMRAM 000029
 main@val                 cstackCOMRAM 00002B
-rotate_r@buf             cstackCOMRAM 00000C
-rotate_r@buf_212         cstackCOMRAM 00000E
-rotate_r@tempa           cstackCOMRAM 000010
-rotate_r@tempb           cstackCOMRAM 000016
-rotate_r@tempc           cstackCOMRAM 00001C
-rotate_r@tempd           cstackCOMRAM 000022
-rotate_r@val             cstackCOMRAM 000009
+rotate_bot@buf           cstackCOMRAM 000004
+rotate_bot@buf_267       cstackCOMRAM 000006
+rotate_bot@tempa         cstackCOMRAM 000008
+rotate_bot@tempb         cstackCOMRAM 00000E
+rotate_bot@tempc         cstackCOMRAM 000014
+rotate_bot@tempd         cstackCOMRAM 00001A
+rotate_bot@val           cstackCOMRAM 000001
+rotate_l@buf             cstackCOMRAM 000004
+rotate_l@buf_227         cstackCOMRAM 000006
+rotate_l@tempa           cstackCOMRAM 000008
+rotate_l@tempb           cstackCOMRAM 00000E
+rotate_l@tempc           cstackCOMRAM 000014
+rotate_l@tempd           cstackCOMRAM 00001A
+rotate_l@val             cstackCOMRAM 000001
+rotate_r@buf             cstackCOMRAM 000004
+rotate_r@buf_207         cstackCOMRAM 000006
+rotate_r@tempa           cstackCOMRAM 000008
+rotate_r@tempb           cstackCOMRAM 00000E
+rotate_r@tempc           cstackCOMRAM 000014
+rotate_r@tempd           cstackCOMRAM 00001A
+rotate_r@val             cstackCOMRAM 000001
+rotate_sidebot@buf       cstackCOMRAM 000004
+rotate_sidebot@buf_307   cstackCOMRAM 000006
+rotate_sidebot@tempa     cstackCOMRAM 000008
+rotate_sidebot@tempb     cstackCOMRAM 00000E
+rotate_sidebot@tempc     cstackCOMRAM 000014
+rotate_sidebot@tempd     cstackCOMRAM 00001A
+rotate_sidebot@val       cstackCOMRAM 000001
+rotate_sidetop@buf       cstackCOMRAM 000004
+rotate_sidetop@buf_287   cstackCOMRAM 000006
+rotate_sidetop@tempa     cstackCOMRAM 000008
+rotate_sidetop@tempb     cstackCOMRAM 00000E
+rotate_sidetop@tempc     cstackCOMRAM 000014
+rotate_sidetop@tempd     cstackCOMRAM 00001A
+rotate_sidetop@val       cstackCOMRAM 000001
+rotate_top@buf           cstackCOMRAM 000004
+rotate_top@buf_247       cstackCOMRAM 000006
+rotate_top@tempa         cstackCOMRAM 000008
+rotate_top@tempb         cstackCOMRAM 00000E
+rotate_top@tempc         cstackCOMRAM 000014
+rotate_top@tempd         cstackCOMRAM 00001A
+rotate_top@val           cstackCOMRAM 000001
 stackhi                  (abs)        0005F3
 stacklo                  (abs)        000190
 start                    init         000000
-start_initialization     cinit        0074BC
+start_initialization     cinit        0065F6
 
 
 FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 192 in file "newmain.c"
+		line 416 in file "newmain.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
+  init_adc        2   32[COMRAM] int 
   val             2   42[COMRAM] int 
-  temp            2   40[COMRAM] int 
-  i               2   44[COMRAM] int 
+  temp            2   34[COMRAM] int 
+  turn            2   40[COMRAM] int 
+  i               2   38[COMRAM] int 
+  j               2   36[COMRAM] int 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
@@ -434,10 +521,10 @@ FUNCTION INFORMATION:
 		Unchanged: 
  Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
       Params:         0       0       0       0       0       0       0
-      Locals:         6       0       0       0       0       0       0
+      Locals:        12       0       0       0       0       0       0
       Temps:          1       0       0       0       0       0       0
-      Totals:         7       0       0       0       0       0       0
-Total ram usage:        7 bytes
+      Totals:        13       0       0       0       0       0       0
+Total ram usage:       13 bytes
  Hardware stack levels required when called:    2
  This function calls:
 		_ADC_Initialize
@@ -445,24 +532,199 @@ Total ram usage:        7 bytes
 		___awdiv
 		___wmul
 		_initial
+		_rotate_bot
+		_rotate_l
 		_rotate_r
+		_rotate_sidebot
+		_rotate_sidetop
+		_rotate_top
  This function is called by:
 		Startup code after reset
  This function uses a non-reentrant model
 
 
+ *************** function _rotate_top *****************
+ Defined at:
+		line 228 in file "newmain.c"
+ Parameters:    Size  Location     Type
+  val             2    0[COMRAM] int 
+ Auto vars:     Size  Location     Type
+  tempd           6   25[COMRAM] struct RGB
+  tempc           6   19[COMRAM] struct RGB
+  tempb           6   13[COMRAM] struct RGB
+  tempa           6    7[COMRAM] struct RGB
+  buf             2    5[COMRAM] int 
+  buf             2    3[COMRAM] int 
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+      Params:         2       0       0       0       0       0       0
+      Locals:        28       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0
+      Totals:        31       0       0       0       0       0       0
+Total ram usage:       31 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _rotate_sidetop *****************
+ Defined at:
+		line 322 in file "newmain.c"
+ Parameters:    Size  Location     Type
+  val             2    0[COMRAM] int 
+ Auto vars:     Size  Location     Type
+  tempd           6   25[COMRAM] struct RGB
+  tempc           6   19[COMRAM] struct RGB
+  tempb           6   13[COMRAM] struct RGB
+  tempa           6    7[COMRAM] struct RGB
+  buf             2    5[COMRAM] int 
+  buf             2    3[COMRAM] int 
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+      Params:         2       0       0       0       0       0       0
+      Locals:        28       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0
+      Totals:        31       0       0       0       0       0       0
+Total ram usage:       31 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _rotate_sidebot *****************
+ Defined at:
+		line 369 in file "newmain.c"
+ Parameters:    Size  Location     Type
+  val             2    0[COMRAM] int 
+ Auto vars:     Size  Location     Type
+  tempd           6   25[COMRAM] struct RGB
+  tempc           6   19[COMRAM] struct RGB
+  tempb           6   13[COMRAM] struct RGB
+  tempa           6    7[COMRAM] struct RGB
+  buf             2    5[COMRAM] int 
+  buf             2    3[COMRAM] int 
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+      Params:         2       0       0       0       0       0       0
+      Locals:        28       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0
+      Totals:        31       0       0       0       0       0       0
+Total ram usage:       31 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
  *************** function _rotate_r *****************
  Defined at:
-		line 128 in file "newmain.c"
+		line 135 in file "newmain.c"
  Parameters:    Size  Location     Type
-  val             2    8[COMRAM] int 
+  val             2    0[COMRAM] int 
  Auto vars:     Size  Location     Type
-  tempd           6   33[COMRAM] struct RGB
-  tempc           6   27[COMRAM] struct RGB
-  tempb           6   21[COMRAM] struct RGB
-  tempa           6   15[COMRAM] struct RGB
-  buf             2   13[COMRAM] int 
-  buf             2   11[COMRAM] int 
+  tempd           6   25[COMRAM] struct RGB
+  tempc           6   19[COMRAM] struct RGB
+  tempb           6   13[COMRAM] struct RGB
+  tempa           6    7[COMRAM] struct RGB
+  buf             2    5[COMRAM] int 
+  buf             2    3[COMRAM] int 
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+      Params:         2       0       0       0       0       0       0
+      Locals:        28       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0
+      Totals:        31       0       0       0       0       0       0
+Total ram usage:       31 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _rotate_l *****************
+ Defined at:
+		line 181 in file "newmain.c"
+ Parameters:    Size  Location     Type
+  val             2    0[COMRAM] int 
+ Auto vars:     Size  Location     Type
+  tempd           6   25[COMRAM] struct RGB
+  tempc           6   19[COMRAM] struct RGB
+  tempb           6   13[COMRAM] struct RGB
+  tempa           6    7[COMRAM] struct RGB
+  buf             2    5[COMRAM] int 
+  buf             2    3[COMRAM] int 
+ Return value:  Size  Location     Type
+                  1    wreg      void 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+      Params:         2       0       0       0       0       0       0
+      Locals:        28       0       0       0       0       0       0
+      Temps:          1       0       0       0       0       0       0
+      Totals:        31       0       0       0       0       0       0
+Total ram usage:       31 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _rotate_bot *****************
+ Defined at:
+		line 275 in file "newmain.c"
+ Parameters:    Size  Location     Type
+  val             2    0[COMRAM] int 
+ Auto vars:     Size  Location     Type
+  tempd           6   25[COMRAM] struct RGB
+  tempc           6   19[COMRAM] struct RGB
+  tempb           6   13[COMRAM] struct RGB
+  tempa           6    7[COMRAM] struct RGB
+  buf             2    5[COMRAM] int 
+  buf             2    3[COMRAM] int 
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
@@ -487,7 +749,7 @@ Total ram usage:       31 bytes
 
  *************** function _initial *****************
  Defined at:
-		line 95 in file "newmain.c"
+		line 102 in file "newmain.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -580,9 +842,9 @@ Total ram usage:        8 bytes
 
  *************** function _ADC_Read *****************
  Defined at:
-		line 81 in file "newmain.c"
+		line 88 in file "newmain.c"
  Parameters:    Size  Location     Type
-		None
+  channle         2    0[COMRAM] int 
  Auto vars:     Size  Location     Type
   digital         2    4[COMRAM] int 
  Return value:  Size  Location     Type
@@ -609,7 +871,7 @@ Total ram usage:        6 bytes
 
  *************** function _ADC_Initialize *****************
  Defined at:
-		line 71 in file "newmain.c"
+		line 78 in file "newmain.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -641,26 +903,31 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\awdiv.c
-		___awdiv       		CODE           	754A	0000	197
+		___awdiv       		CODE           	667E	0000	197
 
 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\awdiv.c estimated size: 197
 
 newmain.c
-		_rotate_r      		CODE           	7770	0000	655
-		_ADC_Initialize		CODE           	74D2	0000	29
-		_main          		CODE           	760E	0000	355
+		_rotate_l      		CODE           	69D0	0000	655
+		_rotate_r      		CODE           	6C5E	0000	655
+		_rotate_bot    		CODE           	6742	0000	655
+		_rotate_top    		CODE           	7408	0000	655
+		_ADC_Initialize		CODE           	65DA	0000	29
+		_main          		CODE           	7696	0000	873
+		_rotate_sidebot		CODE           	6EEC	0000	655
+		_rotate_sidetop		CODE           	717A	0000	655
 		_initial       		CODE           	79FE	0000	963
-		_ADC_Read      		CODE           	7514	0000	55
+		_ADC_Read      		CODE           	663A	0000	69
 
-newmain.c estimated size: 2057
+newmain.c estimated size: 5864
 
 shared
-		__initialization		CODE           	74BC	0000	17
+		__initialization		CODE           	65F6	0000	25
 
-shared estimated size: 17
+shared estimated size: 25
 
 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul16.c
-		___wmul        		CODE           	74EE	0000	39
+		___wmul        		CODE           	6614	0000	39
 
 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\sources\c99\common\Umul16.c estimated size: 39
 
