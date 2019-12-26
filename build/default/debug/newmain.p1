@@ -81,6 +81,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1313
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 1313: extern volatile unsigned char LATD __attribute__((address(0xF8C)));
 [v _LATD `Vuc ~T0 @X0 0 e@3980 ]
+"1699
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 1699: extern volatile unsigned char TRISB __attribute__((address(0xF93)));
+[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
+"1089
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 1089: extern volatile unsigned char LATB __attribute__((address(0xF8A)));
+[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
 "1319
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 1319:     struct {
 [s S55 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -96,6 +102,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1340
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 1340: extern volatile LATDbits_t LATDbits __attribute__((address(0xF8C)));
 [v _LATDbits `VS54 ~T0 @X0 0 e@3980 ]
+"1095
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 1095:     struct {
+[s S49 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S49 . LATB0 LATB1 LATB2 LATB3 LATB4 LATB5 LATB6 LATB7 ]
+"1105
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 1105:     struct {
+[s S50 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S50 . LB0 LB1 LB2 LB3 LB4 LB5 LB6 LB7 ]
+"1094
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 1094: typedef union {
+[u S48 `S49 1 `S50 1 ]
+[n S48 . . . ]
+"1116
+[; ;C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18f4520.h: 1116: extern volatile LATBbits_t LATBbits __attribute__((address(0xF8A)));
+[v _LATBbits `VS48 ~T0 @X0 0 e@3978 ]
+[v F2524 `(v ~T0 @X0 1 tf1`ul ]
+"187 C:\Program Files (x86)\Microchip\xc8\v2.10\pic\include\pic18.h
+[v __delay `JF2524 ~T0 @X0 0 e ]
+[p i __delay ]
 "8 newmain.c
 [; ;newmain.c: 8: 
 [p x OSC = INTIO67 ]
@@ -632,1370 +657,1366 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;newmain.c: 90:     int digital;
 [v _digital `i ~T0 @X0 1 a ]
 "92
-[; ;newmain.c: 92:     if(channle == 2) channle = 6;
-[e $ ! == _channle -> 2 `i 286  ]
-[e = _channle -> 6 `i ]
-[e :U 286 ]
-"93
-[; ;newmain.c: 93:     if(channle == 3) channle = 7;
-[e $ ! == _channle -> 3 `i 287  ]
-[e = _channle -> 7 `i ]
-[e :U 287 ]
-"94
-[; ;newmain.c: 94:     ADCON0bits.CHS = channle;
+[; ;newmain.c: 92:     ADCON0bits.CHS = channle;
 [e = . . _ADCON0bits 1 2 -> _channle `uc ]
-"95
-[; ;newmain.c: 95:     ADCON0bits.GO = 1;
+"93
+[; ;newmain.c: 93:     ADCON0bits.GO = 1;
 [e = . . _ADCON0bits 2 1 -> -> 1 `i `uc ]
-"96
-[; ;newmain.c: 96:     ADCON0bits.ADON = 1;
+"94
+[; ;newmain.c: 94:     ADCON0bits.ADON = 1;
 [e = . . _ADCON0bits 1 0 -> -> 1 `i `uc ]
-"98
-[; ;newmain.c: 98:     while(ADCON0bits.GO_nDONE==1);
-[e $U 288  ]
-[e :U 289 ]
+"96
+[; ;newmain.c: 96:     while(ADCON0bits.GO_nDONE==1);
+[e $U 286  ]
+[e :U 287 ]
+[e :U 286 ]
+[e $ == -> . . _ADCON0bits 1 1 `i -> 1 `i 287  ]
 [e :U 288 ]
-[e $ == -> . . _ADCON0bits 1 1 `i -> 1 `i 289  ]
-[e :U 290 ]
-"100
-[; ;newmain.c: 100:     digital = (ADRESH*256) | (ADRESL);
+"98
+[; ;newmain.c: 98:     digital = (ADRESH*256) | (ADRESL);
 [e = _digital | * -> _ADRESH `i -> 256 `i -> _ADRESL `i ]
-"101
-[; ;newmain.c: 101:     return(digital);
+"99
+[; ;newmain.c: 99:     return(digital);
 [e ) _digital ]
 [e $UE 285  ]
-"102
-[; ;newmain.c: 102: }
+"100
+[; ;newmain.c: 100: }
 [e :UE 285 ]
 }
-"104
-[; ;newmain.c: 104: void initial(void){
+"102
+[; ;newmain.c: 102: void initial(void){
 [v _initial `(v ~T0 @X0 1 ef ]
 {
 [e :U _initial ]
 [f ]
-"105
-[; ;newmain.c: 105:     int i;
+"103
+[; ;newmain.c: 103:     int i;
 [v _i `i ~T0 @X0 1 a ]
-"106
-[; ;newmain.c: 106:     for(i = 0;i < 4;i++){
+"104
+[; ;newmain.c: 104:     for(i = 0;i < 4;i++){
 {
 [e = _i -> 0 `i ]
-[e $ < _i -> 4 `i 292  ]
-[e $U 293  ]
-[e :U 292 ]
+[e $ < _i -> 4 `i 290  ]
+[e $U 291  ]
+[e :U 290 ]
 {
-"107
-[; ;newmain.c: 107:         rgb[i].r = 0;
+"105
+[; ;newmain.c: 105:         rgb[i].r = 0;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 0 -> 0 `i ]
-"108
-[; ;newmain.c: 108:         rgb[i].g = 1;
+"106
+[; ;newmain.c: 106:         rgb[i].g = 1;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 1 -> 1 `i ]
-"109
-[; ;newmain.c: 109:         rgb[i].b = 1;
+"107
+[; ;newmain.c: 107:         rgb[i].b = 1;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 2 -> 1 `i ]
-"110
-[; ;newmain.c: 110:     }
+"108
+[; ;newmain.c: 108:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 4 `i 292  ]
-[e :U 293 ]
+[e $ < _i -> 4 `i 290  ]
+[e :U 291 ]
 }
-"111
-[; ;newmain.c: 111:     for(i = 4;i < 8;i++){
+"109
+[; ;newmain.c: 109:     for(i = 4;i < 8;i++){
 {
 [e = _i -> 4 `i ]
-[e $ < _i -> 8 `i 295  ]
-[e $U 296  ]
-[e :U 295 ]
+[e $ < _i -> 8 `i 293  ]
+[e $U 294  ]
+[e :U 293 ]
 {
-"112
-[; ;newmain.c: 112:         rgb[i].r = 1;
+"110
+[; ;newmain.c: 110:         rgb[i].r = 1;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 0 -> 1 `i ]
-"113
-[; ;newmain.c: 113:         rgb[i].g = 0;
+"111
+[; ;newmain.c: 111:         rgb[i].g = 0;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 1 -> 0 `i ]
-"114
-[; ;newmain.c: 114:         rgb[i].b = 1;
+"112
+[; ;newmain.c: 112:         rgb[i].b = 1;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 2 -> 1 `i ]
-"115
-[; ;newmain.c: 115:     }
+"113
+[; ;newmain.c: 113:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 8 `i 295  ]
-[e :U 296 ]
+[e $ < _i -> 8 `i 293  ]
+[e :U 294 ]
 }
-"116
-[; ;newmain.c: 116:     for(i = 8;i < 12;i++){
+"114
+[; ;newmain.c: 114:     for(i = 8;i < 12;i++){
 {
 [e = _i -> 8 `i ]
-[e $ < _i -> 12 `i 298  ]
-[e $U 299  ]
-[e :U 298 ]
+[e $ < _i -> 12 `i 296  ]
+[e $U 297  ]
+[e :U 296 ]
 {
-"117
-[; ;newmain.c: 117:         rgb[i].r = 1;
+"115
+[; ;newmain.c: 115:         rgb[i].r = 1;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 0 -> 1 `i ]
-"118
-[; ;newmain.c: 118:         rgb[i].g = 1;
+"116
+[; ;newmain.c: 116:         rgb[i].g = 1;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 1 -> 1 `i ]
-"119
-[; ;newmain.c: 119:         rgb[i].b = 0;
+"117
+[; ;newmain.c: 117:         rgb[i].b = 0;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 2 -> 0 `i ]
-"120
-[; ;newmain.c: 120:     }
+"118
+[; ;newmain.c: 118:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 12 `i 298  ]
-[e :U 299 ]
+[e $ < _i -> 12 `i 296  ]
+[e :U 297 ]
 }
-"121
-[; ;newmain.c: 121:     for(i = 12;i < 16;i++){
+"119
+[; ;newmain.c: 119:     for(i = 12;i < 16;i++){
 {
 [e = _i -> 12 `i ]
-[e $ < _i -> 16 `i 301  ]
-[e $U 302  ]
-[e :U 301 ]
+[e $ < _i -> 16 `i 299  ]
+[e $U 300  ]
+[e :U 299 ]
 {
-"122
-[; ;newmain.c: 122:         rgb[i].r = 0;
+"120
+[; ;newmain.c: 120:         rgb[i].r = 0;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 0 -> 0 `i ]
-"123
-[; ;newmain.c: 123:         rgb[i].g = 1;
+"121
+[; ;newmain.c: 121:         rgb[i].g = 1;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 1 -> 1 `i ]
-"124
-[; ;newmain.c: 124:         rgb[i].b = 0;
+"122
+[; ;newmain.c: 122:         rgb[i].b = 0;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 2 -> 0 `i ]
-"125
-[; ;newmain.c: 125:     }
+"123
+[; ;newmain.c: 123:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 16 `i 301  ]
-[e :U 302 ]
+[e $ < _i -> 16 `i 299  ]
+[e :U 300 ]
 }
-"126
-[; ;newmain.c: 126:     for(i = 16;i < 20;i++){
+"124
+[; ;newmain.c: 124:     for(i = 16;i < 20;i++){
 {
 [e = _i -> 16 `i ]
-[e $ < _i -> 20 `i 304  ]
-[e $U 305  ]
-[e :U 304 ]
+[e $ < _i -> 20 `i 302  ]
+[e $U 303  ]
+[e :U 302 ]
 {
-"127
-[; ;newmain.c: 127:         rgb[i].r = 0;
+"125
+[; ;newmain.c: 125:         rgb[i].r = 0;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 0 -> 0 `i ]
-"128
-[; ;newmain.c: 128:         rgb[i].g = 0;
+"126
+[; ;newmain.c: 126:         rgb[i].g = 0;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 1 -> 0 `i ]
-"129
-[; ;newmain.c: 129:         rgb[i].b = 1;
+"127
+[; ;newmain.c: 127:         rgb[i].b = 1;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 2 -> 1 `i ]
-"130
-[; ;newmain.c: 130:     }
+"128
+[; ;newmain.c: 128:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 20 `i 304  ]
-[e :U 305 ]
+[e $ < _i -> 20 `i 302  ]
+[e :U 303 ]
 }
-"131
-[; ;newmain.c: 131:     for(i = 20;i < 24;i++){
+"129
+[; ;newmain.c: 129:     for(i = 20;i < 24;i++){
 {
 [e = _i -> 20 `i ]
-[e $ < _i -> 24 `i 307  ]
-[e $U 308  ]
-[e :U 307 ]
+[e $ < _i -> 24 `i 305  ]
+[e $U 306  ]
+[e :U 305 ]
 {
-"132
-[; ;newmain.c: 132:         rgb[i].r = 0;
+"130
+[; ;newmain.c: 130:         rgb[i].r = 0;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 0 -> 0 `i ]
-"133
-[; ;newmain.c: 133:         rgb[i].g = 0;
+"131
+[; ;newmain.c: 131:         rgb[i].g = 0;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 1 -> 0 `i ]
-"134
-[; ;newmain.c: 134:         rgb[i].b = 0;
+"132
+[; ;newmain.c: 132:         rgb[i].b = 0;
 [e = . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 2 -> 0 `i ]
-"135
-[; ;newmain.c: 135:     }
+"133
+[; ;newmain.c: 133:     }
 }
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 24 `i 307  ]
-[e :U 308 ]
+[e $ < _i -> 24 `i 305  ]
+[e :U 306 ]
 }
-"136
-[; ;newmain.c: 136: }
-[e :UE 291 ]
+"134
+[; ;newmain.c: 134: }
+[e :UE 289 ]
 }
-"137
-[; ;newmain.c: 137: void rotate_r(int val){
+"135
+[; ;newmain.c: 135: void rotate_r(int val){
 [v _rotate_r `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _rotate_r ]
 [v _val `i ~T0 @X0 1 r1 ]
 [f ]
-"138
-[; ;newmain.c: 138:     if(val > 3){
-[e $ ! > _val -> 3 `i 311  ]
+"136
+[; ;newmain.c: 136:     if(val > 3){
+[e $ ! > _val -> 3 `i 309  ]
 {
-"139
-[; ;newmain.c: 139:         val = 3;
+"137
+[; ;newmain.c: 137:         val = 3;
 [e = _val -> 3 `i ]
+"138
+[; ;newmain.c: 138:     }
+}
+[e :U 309 ]
+"139
+[; ;newmain.c: 139:     if(val>original[2]){
+[e $ ! > _val *U + &U _original * -> -> -> 2 `i `ui `ux -> -> # *U &U _original `ui `ux 310  ]
+{
 "140
-[; ;newmain.c: 140:     }
+[; ;newmain.c: 140:         int buf = val-original[2];
+[v _buf `i ~T0 @X0 1 a ]
+[e = _buf - _val *U + &U _original * -> -> -> 2 `i `ui `ux -> -> # *U &U _original `ui `ux ]
+"141
+[; ;newmain.c: 141:         while(buf>0){
+[e $U 311  ]
+[e :U 312 ]
+{
+"142
+[; ;newmain.c: 142:             rgbarray tempa = rgb[2];
+[v _tempa `S1 ~T0 @X0 1 a ]
+[e = _tempa *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
+"143
+[; ;newmain.c: 143:             rgbarray tempb = rgb[3];
+[v _tempb `S1 ~T0 @X0 1 a ]
+[e = _tempb *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
+"144
+[; ;newmain.c: 144:             rgb[2].r = rgb[6].r;rgb[3].r = rgb[7].r;
+[e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"145
+[; ;newmain.c: 145:             rgb[2].g = rgb[6].g;rgb[3].g = rgb[7].g;
+[e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"146
+[; ;newmain.c: 146:             rgb[2].b = rgb[6].b;rgb[3].b = rgb[7].b;
+[e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"147
+[; ;newmain.c: 147:             rgb[6].r = rgb[10].r;rgb[7].r = rgb[11].r;
+[e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"148
+[; ;newmain.c: 148:             rgb[6].g = rgb[10].g;rgb[7].g = rgb[11].g;
+[e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"149
+[; ;newmain.c: 149:             rgb[6].b = rgb[10].b;rgb[7].b = rgb[11].b;
+[e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"150
+[; ;newmain.c: 150:             rgb[10].r = rgb[14].r;rgb[11].r = rgb[15].r;
+[e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"151
+[; ;newmain.c: 151:             rgb[10].g = rgb[14].g;rgb[11].g = rgb[15].g;
+[e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"152
+[; ;newmain.c: 152:             rgb[10].b = rgb[14].b;rgb[11].b = rgb[15].b;
+[e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"153
+[; ;newmain.c: 153:             rgb[14].r = tempa.r;rgb[15].r = tempb.r;
+[e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempa 0 ]
+[e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempb 0 ]
+"154
+[; ;newmain.c: 154:             rgb[14].g = tempa.g;rgb[15].g = tempb.g;
+[e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempa 1 ]
+[e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempb 1 ]
+"155
+[; ;newmain.c: 155:             rgb[14].b = tempa.b;rgb[15].b = tempb.b;
+[e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempa 2 ]
+[e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempb 2 ]
+"156
+[; ;newmain.c: 156:             buf--;
+[e -- _buf -> 1 `i ]
+"157
+[; ;newmain.c: 157:         }
 }
 [e :U 311 ]
 "141
-[; ;newmain.c: 141:     if(val>original[2]){
-[e $ ! > _val *U + &U _original * -> -> -> 2 `i `ui `ux -> -> # *U &U _original `ui `ux 312  ]
-{
-"142
-[; ;newmain.c: 142:         int buf = val-original[2];
-[v _buf `i ~T0 @X0 1 a ]
-[e = _buf - _val *U + &U _original * -> -> -> 2 `i `ui `ux -> -> # *U &U _original `ui `ux ]
-"143
-[; ;newmain.c: 143:         while(buf>0){
-[e $U 313  ]
-[e :U 314 ]
-{
-"144
-[; ;newmain.c: 144:             rgbarray tempa = rgb[2];
-[v _tempa `S1 ~T0 @X0 1 a ]
-[e = _tempa *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"145
-[; ;newmain.c: 145:             rgbarray tempb = rgb[3];
-[v _tempb `S1 ~T0 @X0 1 a ]
-[e = _tempb *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"146
-[; ;newmain.c: 146:             rgb[2].r = rgb[6].r;rgb[3].r = rgb[7].r;
-[e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"147
-[; ;newmain.c: 147:             rgb[2].g = rgb[6].g;rgb[3].g = rgb[7].g;
-[e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"148
-[; ;newmain.c: 148:             rgb[2].b = rgb[6].b;rgb[3].b = rgb[7].b;
-[e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"149
-[; ;newmain.c: 149:             rgb[6].r = rgb[10].r;rgb[7].r = rgb[11].r;
-[e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"150
-[; ;newmain.c: 150:             rgb[6].g = rgb[10].g;rgb[7].g = rgb[11].g;
-[e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"151
-[; ;newmain.c: 151:             rgb[6].b = rgb[10].b;rgb[7].b = rgb[11].b;
-[e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"152
-[; ;newmain.c: 152:             rgb[10].r = rgb[14].r;rgb[11].r = rgb[15].r;
-[e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"153
-[; ;newmain.c: 153:             rgb[10].g = rgb[14].g;rgb[11].g = rgb[15].g;
-[e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"154
-[; ;newmain.c: 154:             rgb[10].b = rgb[14].b;rgb[11].b = rgb[15].b;
-[e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"155
-[; ;newmain.c: 155:             rgb[14].r = tempa.r;rgb[15].r = tempb.r;
-[e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempa 0 ]
-[e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempb 0 ]
-"156
-[; ;newmain.c: 156:             rgb[14].g = tempa.g;rgb[15].g = tempb.g;
-[e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempa 1 ]
-[e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempb 1 ]
-"157
-[; ;newmain.c: 157:             rgb[14].b = tempa.b;rgb[15].b = tempb.b;
-[e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempa 2 ]
-[e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempb 2 ]
-"158
-[; ;newmain.c: 158:             buf--;
-[e -- _buf -> 1 `i ]
-"159
-[; ;newmain.c: 159:         }
-}
+[; ;newmain.c: 141:         while(buf>0){
+[e $ > _buf -> 0 `i 312  ]
 [e :U 313 ]
-"143
-[; ;newmain.c: 143:         while(buf>0){
-[e $ > _buf -> 0 `i 314  ]
-[e :U 315 ]
-"160
-[; ;newmain.c: 160:     }
+"158
+[; ;newmain.c: 158:     }
 }
-[e $U 316  ]
-"161
-[; ;newmain.c: 161:     else if(original[2]>val){
-[e :U 312 ]
-[e $ ! > *U + &U _original * -> -> -> 2 `i `ui `ux -> -> # *U &U _original `ui `ux _val 317  ]
+[e $U 314  ]
+"159
+[; ;newmain.c: 159:     else if(original[2]>val){
+[e :U 310 ]
+[e $ ! > *U + &U _original * -> -> -> 2 `i `ui `ux -> -> # *U &U _original `ui `ux _val 315  ]
 {
-"162
-[; ;newmain.c: 162:         int buf = original[2]-val;
+"160
+[; ;newmain.c: 160:         int buf = original[2]-val;
 [v _buf `i ~T0 @X0 1 a ]
 [e = _buf - *U + &U _original * -> -> -> 2 `i `ui `ux -> -> # *U &U _original `ui `ux _val ]
-"163
-[; ;newmain.c: 163:         while(buf>0){
-[e $U 318  ]
-[e :U 319 ]
+"161
+[; ;newmain.c: 161:         while(buf>0){
+[e $U 316  ]
+[e :U 317 ]
 {
-"164
-[; ;newmain.c: 164:             rgbarray tempc = rgb[14];
+"162
+[; ;newmain.c: 162:             rgbarray tempc = rgb[14];
 [v _tempc `S1 ~T0 @X0 1 a ]
 [e = _tempc *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"165
-[; ;newmain.c: 165:             rgbarray tempd = rgb[15];
+"163
+[; ;newmain.c: 163:             rgbarray tempd = rgb[15];
 [v _tempd `S1 ~T0 @X0 1 a ]
 [e = _tempd *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"166
-[; ;newmain.c: 166:             rgb[14].r = rgb[10].r;rgb[15].r = rgb[11].r;
+"164
+[; ;newmain.c: 164:             rgb[14].r = rgb[10].r;rgb[15].r = rgb[11].r;
 [e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"167
-[; ;newmain.c: 167:             rgb[14].g = rgb[10].g;rgb[15].g = rgb[11].g;
+"165
+[; ;newmain.c: 165:             rgb[14].g = rgb[10].g;rgb[15].g = rgb[11].g;
 [e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"168
-[; ;newmain.c: 168:             rgb[14].b = rgb[10].b;rgb[15].b = rgb[11].b;
+"166
+[; ;newmain.c: 166:             rgb[14].b = rgb[10].b;rgb[15].b = rgb[11].b;
 [e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"169
-[; ;newmain.c: 169:             rgb[10].r = rgb[6].r;rgb[11].r = rgb[7].r;
+"167
+[; ;newmain.c: 167:             rgb[10].r = rgb[6].r;rgb[11].r = rgb[7].r;
 [e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"170
-[; ;newmain.c: 170:             rgb[10].g = rgb[6].g;rgb[11].g = rgb[7].g;
+"168
+[; ;newmain.c: 168:             rgb[10].g = rgb[6].g;rgb[11].g = rgb[7].g;
 [e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"171
-[; ;newmain.c: 171:             rgb[10].b = rgb[6].b;rgb[11].b = rgb[7].b;
+"169
+[; ;newmain.c: 169:             rgb[10].b = rgb[6].b;rgb[11].b = rgb[7].b;
 [e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"172
-[; ;newmain.c: 172:             rgb[6].r = rgb[2].r;rgb[7].r = rgb[3].r;
+"170
+[; ;newmain.c: 170:             rgb[6].r = rgb[2].r;rgb[7].r = rgb[3].r;
 [e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"173
-[; ;newmain.c: 173:             rgb[6].g = rgb[2].g;rgb[7].g = rgb[3].g;
+"171
+[; ;newmain.c: 171:             rgb[6].g = rgb[2].g;rgb[7].g = rgb[3].g;
 [e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"174
-[; ;newmain.c: 174:             rgb[6].b = rgb[2].b;rgb[7].b = rgb[3].b;
+"172
+[; ;newmain.c: 172:             rgb[6].b = rgb[2].b;rgb[7].b = rgb[3].b;
 [e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"175
-[; ;newmain.c: 175:             rgb[2].r = tempc.r;rgb[3].r = tempd.r;
+"173
+[; ;newmain.c: 173:             rgb[2].r = tempc.r;rgb[3].r = tempd.r;
 [e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempc 0 ]
 [e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempd 0 ]
-"176
-[; ;newmain.c: 176:             rgb[2].g = tempc.g;rgb[3].g = tempd.g;
+"174
+[; ;newmain.c: 174:             rgb[2].g = tempc.g;rgb[3].g = tempd.g;
 [e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempc 1 ]
 [e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempd 1 ]
-"177
-[; ;newmain.c: 177:             rgb[2].b = tempc.b;rgb[3].b = tempd.b;
+"175
+[; ;newmain.c: 175:             rgb[2].b = tempc.b;rgb[3].b = tempd.b;
 [e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempc 2 ]
 [e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempd 2 ]
-"178
-[; ;newmain.c: 178:             buf--;
+"176
+[; ;newmain.c: 176:             buf--;
 [e -- _buf -> 1 `i ]
-"179
-[; ;newmain.c: 179:         }
+"177
+[; ;newmain.c: 177:         }
 }
-[e :U 318 ]
-"163
-[; ;newmain.c: 163:         while(buf>0){
-[e $ > _buf -> 0 `i 319  ]
-[e :U 320 ]
-"181
-[; ;newmain.c: 181:     }
-}
-[e :U 317 ]
 [e :U 316 ]
-"182
-[; ;newmain.c: 182: }
-[e :UE 310 ]
+"161
+[; ;newmain.c: 161:         while(buf>0){
+[e $ > _buf -> 0 `i 317  ]
+[e :U 318 ]
+"179
+[; ;newmain.c: 179:     }
 }
-"183
-[; ;newmain.c: 183: void rotate_l(int val){
+[e :U 315 ]
+[e :U 314 ]
+"180
+[; ;newmain.c: 180: }
+[e :UE 308 ]
+}
+"181
+[; ;newmain.c: 181: void rotate_l(int val){
 [v _rotate_l `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _rotate_l ]
 [v _val `i ~T0 @X0 1 r1 ]
 [f ]
-"185
-[; ;newmain.c: 185:     if(val > 3){
-[e $ ! > _val -> 3 `i 322  ]
+"183
+[; ;newmain.c: 183:     if(val > 3){
+[e $ ! > _val -> 3 `i 320  ]
 {
-"186
-[; ;newmain.c: 186:         val = 3;
+"184
+[; ;newmain.c: 184:         val = 3;
 [e = _val -> 3 `i ]
+"185
+[; ;newmain.c: 185:     }
+}
+[e :U 320 ]
+"186
+[; ;newmain.c: 186:     if(val>original[3]){
+[e $ ! > _val *U + &U _original * -> -> -> 3 `i `ui `ux -> -> # *U &U _original `ui `ux 321  ]
+{
 "187
-[; ;newmain.c: 187:     }
+[; ;newmain.c: 187:         int buf = val-original[3];
+[v _buf `i ~T0 @X0 1 a ]
+[e = _buf - _val *U + &U _original * -> -> -> 3 `i `ui `ux -> -> # *U &U _original `ui `ux ]
+"188
+[; ;newmain.c: 188:         while(buf>0){
+[e $U 322  ]
+[e :U 323 ]
+{
+"189
+[; ;newmain.c: 189:             rgbarray tempa = rgb[0];
+[v _tempa `S1 ~T0 @X0 1 a ]
+[e = _tempa *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
+"190
+[; ;newmain.c: 190:             rgbarray tempb = rgb[1];
+[v _tempb `S1 ~T0 @X0 1 a ]
+[e = _tempb *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
+"191
+[; ;newmain.c: 191:             rgb[0].r = rgb[4].r;rgb[1].r = rgb[5].r;
+[e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"192
+[; ;newmain.c: 192:             rgb[0].g = rgb[4].g;rgb[1].g = rgb[5].g;
+[e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"193
+[; ;newmain.c: 193:             rgb[0].b = rgb[4].b;rgb[1].b = rgb[5].b;
+[e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"194
+[; ;newmain.c: 194:             rgb[4].r = rgb[8].r;rgb[5].r = rgb[9].r;
+[e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"195
+[; ;newmain.c: 195:             rgb[4].g = rgb[8].g;rgb[5].g = rgb[9].g;
+[e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"196
+[; ;newmain.c: 196:             rgb[4].b = rgb[8].b;rgb[5].b = rgb[9].b;
+[e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"197
+[; ;newmain.c: 197:             rgb[8].r = rgb[12].r;rgb[9].r = rgb[13].r;
+[e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"198
+[; ;newmain.c: 198:             rgb[8].g = rgb[12].g;rgb[9].g = rgb[13].g;
+[e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"199
+[; ;newmain.c: 199:             rgb[8].b = rgb[12].b;rgb[9].b = rgb[13].b;
+[e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"200
+[; ;newmain.c: 200:             rgb[12].r = tempa.r;rgb[13].r = tempb.r;
+[e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempa 0 ]
+[e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempb 0 ]
+"201
+[; ;newmain.c: 201:             rgb[12].g = tempa.g;rgb[13].g = tempb.g;
+[e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempa 1 ]
+[e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempb 1 ]
+"202
+[; ;newmain.c: 202:             rgb[12].b = tempa.b;rgb[13].b = tempb.b;
+[e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempa 2 ]
+[e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempb 2 ]
+"203
+[; ;newmain.c: 203:             buf--;
+[e -- _buf -> 1 `i ]
+"204
+[; ;newmain.c: 204:         }
 }
 [e :U 322 ]
 "188
-[; ;newmain.c: 188:     if(val>original[3]){
-[e $ ! > _val *U + &U _original * -> -> -> 3 `i `ui `ux -> -> # *U &U _original `ui `ux 323  ]
-{
-"189
-[; ;newmain.c: 189:         int buf = val-original[3];
-[v _buf `i ~T0 @X0 1 a ]
-[e = _buf - _val *U + &U _original * -> -> -> 3 `i `ui `ux -> -> # *U &U _original `ui `ux ]
-"190
-[; ;newmain.c: 190:         while(buf>0){
-[e $U 324  ]
-[e :U 325 ]
-{
-"191
-[; ;newmain.c: 191:             rgbarray tempa = rgb[0];
-[v _tempa `S1 ~T0 @X0 1 a ]
-[e = _tempa *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"192
-[; ;newmain.c: 192:             rgbarray tempb = rgb[1];
-[v _tempb `S1 ~T0 @X0 1 a ]
-[e = _tempb *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"193
-[; ;newmain.c: 193:             rgb[0].r = rgb[4].r;rgb[1].r = rgb[5].r;
-[e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"194
-[; ;newmain.c: 194:             rgb[0].g = rgb[4].g;rgb[1].g = rgb[5].g;
-[e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"195
-[; ;newmain.c: 195:             rgb[0].b = rgb[4].b;rgb[1].b = rgb[5].b;
-[e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"196
-[; ;newmain.c: 196:             rgb[4].r = rgb[8].r;rgb[5].r = rgb[9].r;
-[e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"197
-[; ;newmain.c: 197:             rgb[4].g = rgb[8].g;rgb[5].g = rgb[9].g;
-[e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"198
-[; ;newmain.c: 198:             rgb[4].b = rgb[8].b;rgb[5].b = rgb[9].b;
-[e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"199
-[; ;newmain.c: 199:             rgb[8].r = rgb[12].r;rgb[9].r = rgb[13].r;
-[e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"200
-[; ;newmain.c: 200:             rgb[8].g = rgb[12].g;rgb[9].g = rgb[13].g;
-[e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"201
-[; ;newmain.c: 201:             rgb[8].b = rgb[12].b;rgb[9].b = rgb[13].b;
-[e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"202
-[; ;newmain.c: 202:             rgb[12].r = tempa.r;rgb[13].r = tempb.r;
-[e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempa 0 ]
-[e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempb 0 ]
-"203
-[; ;newmain.c: 203:             rgb[12].g = tempa.g;rgb[13].g = tempb.g;
-[e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempa 1 ]
-[e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempb 1 ]
-"204
-[; ;newmain.c: 204:             rgb[12].b = tempa.b;rgb[13].b = tempb.b;
-[e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempa 2 ]
-[e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempb 2 ]
-"205
-[; ;newmain.c: 205:             buf--;
-[e -- _buf -> 1 `i ]
-"206
-[; ;newmain.c: 206:         }
-}
+[; ;newmain.c: 188:         while(buf>0){
+[e $ > _buf -> 0 `i 323  ]
 [e :U 324 ]
-"190
-[; ;newmain.c: 190:         while(buf>0){
-[e $ > _buf -> 0 `i 325  ]
-[e :U 326 ]
-"207
-[; ;newmain.c: 207:     }
+"205
+[; ;newmain.c: 205:     }
 }
-[e $U 327  ]
-"208
-[; ;newmain.c: 208:     else if(original[3]>val){
-[e :U 323 ]
-[e $ ! > *U + &U _original * -> -> -> 3 `i `ui `ux -> -> # *U &U _original `ui `ux _val 328  ]
+[e $U 325  ]
+"206
+[; ;newmain.c: 206:     else if(original[3]>val){
+[e :U 321 ]
+[e $ ! > *U + &U _original * -> -> -> 3 `i `ui `ux -> -> # *U &U _original `ui `ux _val 326  ]
 {
-"209
-[; ;newmain.c: 209:         int buf = original[3]-val;
+"207
+[; ;newmain.c: 207:         int buf = original[3]-val;
 [v _buf `i ~T0 @X0 1 a ]
 [e = _buf - *U + &U _original * -> -> -> 3 `i `ui `ux -> -> # *U &U _original `ui `ux _val ]
-"210
-[; ;newmain.c: 210:         while(buf>0){
-[e $U 329  ]
-[e :U 330 ]
+"208
+[; ;newmain.c: 208:         while(buf>0){
+[e $U 327  ]
+[e :U 328 ]
 {
-"211
-[; ;newmain.c: 211:             rgbarray tempc = rgb[12];
+"209
+[; ;newmain.c: 209:             rgbarray tempc = rgb[12];
 [v _tempc `S1 ~T0 @X0 1 a ]
 [e = _tempc *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"212
-[; ;newmain.c: 212:             rgbarray tempd = rgb[13];
+"210
+[; ;newmain.c: 210:             rgbarray tempd = rgb[13];
 [v _tempd `S1 ~T0 @X0 1 a ]
 [e = _tempd *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"213
-[; ;newmain.c: 213:             rgb[12].r = rgb[8].r;rgb[13].r = rgb[9].r;
+"211
+[; ;newmain.c: 211:             rgb[12].r = rgb[8].r;rgb[13].r = rgb[9].r;
 [e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"214
-[; ;newmain.c: 214:             rgb[12].g = rgb[8].g;rgb[13].g = rgb[9].g;
+"212
+[; ;newmain.c: 212:             rgb[12].g = rgb[8].g;rgb[13].g = rgb[9].g;
 [e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"215
-[; ;newmain.c: 215:             rgb[12].b = rgb[8].b;rgb[13].b = rgb[9].b;
+"213
+[; ;newmain.c: 213:             rgb[12].b = rgb[8].b;rgb[13].b = rgb[9].b;
 [e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"216
-[; ;newmain.c: 216:             rgb[8].r = rgb[4].r;rgb[9].r = rgb[5].r;
+"214
+[; ;newmain.c: 214:             rgb[8].r = rgb[4].r;rgb[9].r = rgb[5].r;
 [e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"217
-[; ;newmain.c: 217:             rgb[8].g = rgb[4].g;rgb[9].g = rgb[5].g;
+"215
+[; ;newmain.c: 215:             rgb[8].g = rgb[4].g;rgb[9].g = rgb[5].g;
 [e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"218
-[; ;newmain.c: 218:             rgb[8].b = rgb[4].b;rgb[9].b = rgb[5].b;
+"216
+[; ;newmain.c: 216:             rgb[8].b = rgb[4].b;rgb[9].b = rgb[5].b;
 [e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"219
-[; ;newmain.c: 219:             rgb[4].r = rgb[0].r;rgb[5].r = rgb[1].r;
+"217
+[; ;newmain.c: 217:             rgb[4].r = rgb[0].r;rgb[5].r = rgb[1].r;
 [e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"220
-[; ;newmain.c: 220:             rgb[4].g = rgb[0].g;rgb[5].g = rgb[1].g;
+"218
+[; ;newmain.c: 218:             rgb[4].g = rgb[0].g;rgb[5].g = rgb[1].g;
 [e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"221
-[; ;newmain.c: 221:             rgb[4].b = rgb[0].b;rgb[5].b = rgb[1].b;
+"219
+[; ;newmain.c: 219:             rgb[4].b = rgb[0].b;rgb[5].b = rgb[1].b;
 [e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"222
-[; ;newmain.c: 222:             rgb[0].r = tempc.r;rgb[1].r = tempd.r;
+"220
+[; ;newmain.c: 220:             rgb[0].r = tempc.r;rgb[1].r = tempd.r;
 [e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempc 0 ]
 [e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempd 0 ]
-"223
-[; ;newmain.c: 223:             rgb[0].g = tempc.g;rgb[1].g = tempd.g;
+"221
+[; ;newmain.c: 221:             rgb[0].g = tempc.g;rgb[1].g = tempd.g;
 [e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempc 1 ]
 [e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempd 1 ]
-"224
-[; ;newmain.c: 224:             rgb[0].b = tempc.b;rgb[1].b = tempd.b;
+"222
+[; ;newmain.c: 222:             rgb[0].b = tempc.b;rgb[1].b = tempd.b;
 [e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempc 2 ]
 [e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempd 2 ]
-"225
-[; ;newmain.c: 225:             buf--;
+"223
+[; ;newmain.c: 223:             buf--;
 [e -- _buf -> 1 `i ]
-"226
-[; ;newmain.c: 226:         }
+"224
+[; ;newmain.c: 224:         }
 }
-[e :U 329 ]
-"210
-[; ;newmain.c: 210:         while(buf>0){
-[e $ > _buf -> 0 `i 330  ]
-[e :U 331 ]
-"227
-[; ;newmain.c: 227:     }
-}
-[e :U 328 ]
 [e :U 327 ]
-"228
-[; ;newmain.c: 228: }
-[e :UE 321 ]
+"208
+[; ;newmain.c: 208:         while(buf>0){
+[e $ > _buf -> 0 `i 328  ]
+[e :U 329 ]
+"225
+[; ;newmain.c: 225:     }
 }
-"230
-[; ;newmain.c: 230: void rotate_top(int val){
+[e :U 326 ]
+[e :U 325 ]
+"226
+[; ;newmain.c: 226: }
+[e :UE 319 ]
+}
+"228
+[; ;newmain.c: 228: void rotate_top(int val){
 [v _rotate_top `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _rotate_top ]
 [v _val `i ~T0 @X0 1 r1 ]
 [f ]
-"232
-[; ;newmain.c: 232:     if(val > 3){
-[e $ ! > _val -> 3 `i 333  ]
+"230
+[; ;newmain.c: 230:     if(val > 3){
+[e $ ! > _val -> 3 `i 331  ]
 {
-"233
-[; ;newmain.c: 233:         val = 3;
+"231
+[; ;newmain.c: 231:         val = 3;
 [e = _val -> 3 `i ]
+"232
+[; ;newmain.c: 232:     }
+}
+[e :U 331 ]
+"233
+[; ;newmain.c: 233:     if(val>original[0]){
+[e $ ! > _val *U + &U _original * -> -> -> 0 `i `ui `ux -> -> # *U &U _original `ui `ux 332  ]
+{
 "234
-[; ;newmain.c: 234:     }
+[; ;newmain.c: 234:         int buf = val-original[0];
+[v _buf `i ~T0 @X0 1 a ]
+[e = _buf - _val *U + &U _original * -> -> -> 0 `i `ui `ux -> -> # *U &U _original `ui `ux ]
+"235
+[; ;newmain.c: 235:         while(buf>0){
+[e $U 333  ]
+[e :U 334 ]
+{
+"236
+[; ;newmain.c: 236:             rgbarray tempa = rgb[0];
+[v _tempa `S1 ~T0 @X0 1 a ]
+[e = _tempa *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
+"237
+[; ;newmain.c: 237:             rgbarray tempb = rgb[3];
+[v _tempb `S1 ~T0 @X0 1 a ]
+[e = _tempb *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
+"238
+[; ;newmain.c: 238:             rgb[0].r = rgb[17].r;rgb[3].r = rgb[16].r;
+[e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"239
+[; ;newmain.c: 239:             rgb[0].g = rgb[17].g;rgb[3].g = rgb[16].g;
+[e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"240
+[; ;newmain.c: 240:             rgb[0].b = rgb[17].b;rgb[3].b = rgb[16].b;
+[e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"241
+[; ;newmain.c: 241:             rgb[17].r = rgb[10].r;rgb[16].r = rgb[9].r;
+[e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"242
+[; ;newmain.c: 242:             rgb[17].g = rgb[10].g;rgb[16].g = rgb[9].g;
+[e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"243
+[; ;newmain.c: 243:             rgb[17].b = rgb[10].b;rgb[16].b = rgb[9].b;
+[e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"244
+[; ;newmain.c: 244:             rgb[10].r = rgb[23].r;rgb[9].r = rgb[22].r;
+[e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"245
+[; ;newmain.c: 245:             rgb[10].g = rgb[23].g;rgb[9].g = rgb[22].g;
+[e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"246
+[; ;newmain.c: 246:             rgb[10].b = rgb[23].b;rgb[9].b = rgb[22].b;
+[e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"247
+[; ;newmain.c: 247:             rgb[23].r = tempa.r;rgb[22].r = tempb.r;
+[e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempa 0 ]
+[e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempb 0 ]
+"248
+[; ;newmain.c: 248:             rgb[23].g = tempa.g;rgb[22].g = tempb.g;
+[e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempa 1 ]
+[e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempb 1 ]
+"249
+[; ;newmain.c: 249:             rgb[23].b = tempa.b;rgb[22].b = tempb.b;
+[e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempa 2 ]
+[e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempb 2 ]
+"250
+[; ;newmain.c: 250:             buf--;
+[e -- _buf -> 1 `i ]
+"251
+[; ;newmain.c: 251:         }
 }
 [e :U 333 ]
 "235
-[; ;newmain.c: 235:     if(val>original[0]){
-[e $ ! > _val *U + &U _original * -> -> -> 0 `i `ui `ux -> -> # *U &U _original `ui `ux 334  ]
-{
-"236
-[; ;newmain.c: 236:         int buf = val-original[0];
-[v _buf `i ~T0 @X0 1 a ]
-[e = _buf - _val *U + &U _original * -> -> -> 0 `i `ui `ux -> -> # *U &U _original `ui `ux ]
-"237
-[; ;newmain.c: 237:         while(buf>0){
-[e $U 335  ]
-[e :U 336 ]
-{
-"238
-[; ;newmain.c: 238:             rgbarray tempa = rgb[0];
-[v _tempa `S1 ~T0 @X0 1 a ]
-[e = _tempa *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"239
-[; ;newmain.c: 239:             rgbarray tempb = rgb[3];
-[v _tempb `S1 ~T0 @X0 1 a ]
-[e = _tempb *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"240
-[; ;newmain.c: 240:             rgb[0].r = rgb[17].r;rgb[3].r = rgb[16].r;
-[e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"241
-[; ;newmain.c: 241:             rgb[0].g = rgb[17].g;rgb[3].g = rgb[16].g;
-[e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"242
-[; ;newmain.c: 242:             rgb[0].b = rgb[17].b;rgb[3].b = rgb[16].b;
-[e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"243
-[; ;newmain.c: 243:             rgb[17].r = rgb[10].r;rgb[16].r = rgb[9].r;
-[e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"244
-[; ;newmain.c: 244:             rgb[17].g = rgb[10].g;rgb[16].g = rgb[9].g;
-[e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"245
-[; ;newmain.c: 245:             rgb[17].b = rgb[10].b;rgb[16].b = rgb[9].b;
-[e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"246
-[; ;newmain.c: 246:             rgb[10].r = rgb[23].r;rgb[9].r = rgb[22].r;
-[e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"247
-[; ;newmain.c: 247:             rgb[10].g = rgb[23].g;rgb[9].g = rgb[22].g;
-[e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"248
-[; ;newmain.c: 248:             rgb[10].b = rgb[23].b;rgb[9].b = rgb[22].b;
-[e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"249
-[; ;newmain.c: 249:             rgb[23].r = tempa.r;rgb[22].r = tempb.r;
-[e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempa 0 ]
-[e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempb 0 ]
-"250
-[; ;newmain.c: 250:             rgb[23].g = tempa.g;rgb[22].g = tempb.g;
-[e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempa 1 ]
-[e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempb 1 ]
-"251
-[; ;newmain.c: 251:             rgb[23].b = tempa.b;rgb[22].b = tempb.b;
-[e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempa 2 ]
-[e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempb 2 ]
-"252
-[; ;newmain.c: 252:             buf--;
-[e -- _buf -> 1 `i ]
-"253
-[; ;newmain.c: 253:         }
-}
+[; ;newmain.c: 235:         while(buf>0){
+[e $ > _buf -> 0 `i 334  ]
 [e :U 335 ]
-"237
-[; ;newmain.c: 237:         while(buf>0){
-[e $ > _buf -> 0 `i 336  ]
-[e :U 337 ]
-"254
-[; ;newmain.c: 254:     }
+"252
+[; ;newmain.c: 252:     }
 }
-[e $U 338  ]
-"255
-[; ;newmain.c: 255:     else if(original[0]>val){
-[e :U 334 ]
-[e $ ! > *U + &U _original * -> -> -> 0 `i `ui `ux -> -> # *U &U _original `ui `ux _val 339  ]
+[e $U 336  ]
+"253
+[; ;newmain.c: 253:     else if(original[0]>val){
+[e :U 332 ]
+[e $ ! > *U + &U _original * -> -> -> 0 `i `ui `ux -> -> # *U &U _original `ui `ux _val 337  ]
 {
-"256
-[; ;newmain.c: 256:         int buf = original[0]-val;
+"254
+[; ;newmain.c: 254:         int buf = original[0]-val;
 [v _buf `i ~T0 @X0 1 a ]
 [e = _buf - *U + &U _original * -> -> -> 0 `i `ui `ux -> -> # *U &U _original `ui `ux _val ]
-"257
-[; ;newmain.c: 257:         while(buf>0){
-[e $U 340  ]
-[e :U 341 ]
+"255
+[; ;newmain.c: 255:         while(buf>0){
+[e $U 338  ]
+[e :U 339 ]
 {
-"258
-[; ;newmain.c: 258:             rgbarray tempc = rgb[0];
+"256
+[; ;newmain.c: 256:             rgbarray tempc = rgb[0];
 [v _tempc `S1 ~T0 @X0 1 a ]
 [e = _tempc *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"259
-[; ;newmain.c: 259:             rgbarray tempd = rgb[3];
+"257
+[; ;newmain.c: 257:             rgbarray tempd = rgb[3];
 [v _tempd `S1 ~T0 @X0 1 a ]
 [e = _tempd *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"260
-[; ;newmain.c: 260:             rgb[0].r = rgb[23].r;rgb[3].r = rgb[22].r;
+"258
+[; ;newmain.c: 258:             rgb[0].r = rgb[23].r;rgb[3].r = rgb[22].r;
 [e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"261
-[; ;newmain.c: 261:             rgb[0].g = rgb[23].g;rgb[3].g = rgb[22].g;
+"259
+[; ;newmain.c: 259:             rgb[0].g = rgb[23].g;rgb[3].g = rgb[22].g;
 [e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"262
-[; ;newmain.c: 262:             rgb[0].b = rgb[23].b;rgb[3].b = rgb[22].b;
+"260
+[; ;newmain.c: 260:             rgb[0].b = rgb[23].b;rgb[3].b = rgb[22].b;
 [e = . *U + &U _rgb * -> -> -> 0 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 3 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"263
-[; ;newmain.c: 263:             rgb[23].r = rgb[10].r;rgb[22].r = rgb[9].r;
+"261
+[; ;newmain.c: 261:             rgb[23].r = rgb[10].r;rgb[22].r = rgb[9].r;
 [e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"264
-[; ;newmain.c: 264:             rgb[23].g = rgb[10].g;rgb[22].g = rgb[9].g;
+"262
+[; ;newmain.c: 262:             rgb[23].g = rgb[10].g;rgb[22].g = rgb[9].g;
 [e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"265
-[; ;newmain.c: 265:             rgb[23].b = rgb[10].b;rgb[22].b = rgb[9].b;
+"263
+[; ;newmain.c: 263:             rgb[23].b = rgb[10].b;rgb[22].b = rgb[9].b;
 [e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"266
-[; ;newmain.c: 266:             rgb[10].r = rgb[17].r;rgb[9].r = rgb[16].r;
+"264
+[; ;newmain.c: 264:             rgb[10].r = rgb[17].r;rgb[9].r = rgb[16].r;
 [e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"267
-[; ;newmain.c: 267:             rgb[10].g = rgb[17].g;rgb[9].g = rgb[16].g;
+"265
+[; ;newmain.c: 265:             rgb[10].g = rgb[17].g;rgb[9].g = rgb[16].g;
 [e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"268
-[; ;newmain.c: 268:             rgb[10].b = rgb[17].b;rgb[9].b = rgb[16].b;
+"266
+[; ;newmain.c: 266:             rgb[10].b = rgb[17].b;rgb[9].b = rgb[16].b;
 [e = . *U + &U _rgb * -> -> -> 10 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 9 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"269
-[; ;newmain.c: 269:             rgb[17].r = tempc.r;rgb[16].r = tempd.r;
+"267
+[; ;newmain.c: 267:             rgb[17].r = tempc.r;rgb[16].r = tempd.r;
 [e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempc 0 ]
 [e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempd 0 ]
-"270
-[; ;newmain.c: 270:             rgb[17].g = tempc.g;rgb[16].g = tempd.g;
+"268
+[; ;newmain.c: 268:             rgb[17].g = tempc.g;rgb[16].g = tempd.g;
 [e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempc 1 ]
 [e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempd 1 ]
-"271
-[; ;newmain.c: 271:             rgb[17].b = tempc.b;rgb[16].b = tempd.b;
+"269
+[; ;newmain.c: 269:             rgb[17].b = tempc.b;rgb[16].b = tempd.b;
 [e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempc 2 ]
 [e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempd 2 ]
-"272
-[; ;newmain.c: 272:             buf--;
+"270
+[; ;newmain.c: 270:             buf--;
 [e -- _buf -> 1 `i ]
-"273
-[; ;newmain.c: 273:         }
+"271
+[; ;newmain.c: 271:         }
 }
-[e :U 340 ]
-"257
-[; ;newmain.c: 257:         while(buf>0){
-[e $ > _buf -> 0 `i 341  ]
-[e :U 342 ]
-"274
-[; ;newmain.c: 274:     }
-}
-[e :U 339 ]
 [e :U 338 ]
-"275
-[; ;newmain.c: 275: }
-[e :UE 332 ]
+"255
+[; ;newmain.c: 255:         while(buf>0){
+[e $ > _buf -> 0 `i 339  ]
+[e :U 340 ]
+"272
+[; ;newmain.c: 272:     }
 }
-"277
-[; ;newmain.c: 277: void rotate_bot(int val){
+[e :U 337 ]
+[e :U 336 ]
+"273
+[; ;newmain.c: 273: }
+[e :UE 330 ]
+}
+"275
+[; ;newmain.c: 275: void rotate_bot(int val){
 [v _rotate_bot `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _rotate_bot ]
 [v _val `i ~T0 @X0 1 r1 ]
 [f ]
-"279
-[; ;newmain.c: 279:     if(val > 3){
-[e $ ! > _val -> 3 `i 344  ]
+"277
+[; ;newmain.c: 277:     if(val > 3){
+[e $ ! > _val -> 3 `i 342  ]
 {
-"280
-[; ;newmain.c: 280:         val = 3;
+"278
+[; ;newmain.c: 278:         val = 3;
 [e = _val -> 3 `i ]
+"279
+[; ;newmain.c: 279:     }
+}
+[e :U 342 ]
+"280
+[; ;newmain.c: 280:     if(val>original[1]){
+[e $ ! > _val *U + &U _original * -> -> -> 1 `i `ui `ux -> -> # *U &U _original `ui `ux 343  ]
+{
 "281
-[; ;newmain.c: 281:     }
+[; ;newmain.c: 281:         int buf = val-original[1];
+[v _buf `i ~T0 @X0 1 a ]
+[e = _buf - _val *U + &U _original * -> -> -> 1 `i `ui `ux -> -> # *U &U _original `ui `ux ]
+"282
+[; ;newmain.c: 282:         while(buf>0){
+[e $U 344  ]
+[e :U 345 ]
+{
+"283
+[; ;newmain.c: 283:             rgbarray tempa = rgb[1];
+[v _tempa `S1 ~T0 @X0 1 a ]
+[e = _tempa *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
+"284
+[; ;newmain.c: 284:             rgbarray tempb = rgb[2];
+[v _tempb `S1 ~T0 @X0 1 a ]
+[e = _tempb *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
+"285
+[; ;newmain.c: 285:             rgb[1].r = rgb[18].r;rgb[2].r = rgb[19].r;
+[e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"286
+[; ;newmain.c: 286:             rgb[1].g = rgb[18].g;rgb[2].g = rgb[19].g;
+[e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"287
+[; ;newmain.c: 287:             rgb[1].b = rgb[18].b;rgb[2].b = rgb[19].b;
+[e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"288
+[; ;newmain.c: 288:             rgb[18].r = rgb[11].r;rgb[19].r = rgb[8].r;
+[e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"289
+[; ;newmain.c: 289:             rgb[18].g = rgb[11].g;rgb[19].g = rgb[8].g;
+[e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"290
+[; ;newmain.c: 290:             rgb[18].b = rgb[11].b;rgb[19].b = rgb[8].b;
+[e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"291
+[; ;newmain.c: 291:             rgb[11].r = rgb[20].r;rgb[8].r = rgb[21].r;
+[e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"292
+[; ;newmain.c: 292:             rgb[11].g = rgb[20].g;rgb[8].g = rgb[21].g;
+[e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"293
+[; ;newmain.c: 293:             rgb[11].b = rgb[20].b;rgb[8].b = rgb[21].b;
+[e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"294
+[; ;newmain.c: 294:             rgb[20].r = tempa.r;rgb[21].r = tempb.r;
+[e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempa 0 ]
+[e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempb 0 ]
+"295
+[; ;newmain.c: 295:             rgb[20].g = tempa.g;rgb[21].g = tempb.g;
+[e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempa 1 ]
+[e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempb 1 ]
+"296
+[; ;newmain.c: 296:             rgb[20].b = tempa.b;rgb[21].b = tempb.b;
+[e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempa 2 ]
+[e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempb 2 ]
+"297
+[; ;newmain.c: 297:             buf--;
+[e -- _buf -> 1 `i ]
+"298
+[; ;newmain.c: 298:         }
 }
 [e :U 344 ]
 "282
-[; ;newmain.c: 282:     if(val>original[1]){
-[e $ ! > _val *U + &U _original * -> -> -> 1 `i `ui `ux -> -> # *U &U _original `ui `ux 345  ]
-{
-"283
-[; ;newmain.c: 283:         int buf = val-original[1];
-[v _buf `i ~T0 @X0 1 a ]
-[e = _buf - _val *U + &U _original * -> -> -> 1 `i `ui `ux -> -> # *U &U _original `ui `ux ]
-"284
-[; ;newmain.c: 284:         while(buf>0){
-[e $U 346  ]
-[e :U 347 ]
-{
-"285
-[; ;newmain.c: 285:             rgbarray tempa = rgb[1];
-[v _tempa `S1 ~T0 @X0 1 a ]
-[e = _tempa *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"286
-[; ;newmain.c: 286:             rgbarray tempb = rgb[2];
-[v _tempb `S1 ~T0 @X0 1 a ]
-[e = _tempb *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"287
-[; ;newmain.c: 287:             rgb[1].r = rgb[18].r;rgb[2].r = rgb[19].r;
-[e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"288
-[; ;newmain.c: 288:             rgb[1].g = rgb[18].g;rgb[2].g = rgb[19].g;
-[e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"289
-[; ;newmain.c: 289:             rgb[1].b = rgb[18].b;rgb[2].b = rgb[19].b;
-[e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"290
-[; ;newmain.c: 290:             rgb[18].r = rgb[11].r;rgb[19].r = rgb[8].r;
-[e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"291
-[; ;newmain.c: 291:             rgb[18].g = rgb[11].g;rgb[19].g = rgb[8].g;
-[e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"292
-[; ;newmain.c: 292:             rgb[18].b = rgb[11].b;rgb[19].b = rgb[8].b;
-[e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"293
-[; ;newmain.c: 293:             rgb[11].r = rgb[20].r;rgb[8].r = rgb[21].r;
-[e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"294
-[; ;newmain.c: 294:             rgb[11].g = rgb[20].g;rgb[8].g = rgb[21].g;
-[e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"295
-[; ;newmain.c: 295:             rgb[11].b = rgb[20].b;rgb[8].b = rgb[21].b;
-[e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"296
-[; ;newmain.c: 296:             rgb[20].r = tempa.r;rgb[21].r = tempb.r;
-[e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempa 0 ]
-[e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempb 0 ]
-"297
-[; ;newmain.c: 297:             rgb[20].g = tempa.g;rgb[21].g = tempb.g;
-[e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempa 1 ]
-[e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempb 1 ]
-"298
-[; ;newmain.c: 298:             rgb[20].b = tempa.b;rgb[21].b = tempb.b;
-[e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempa 2 ]
-[e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempb 2 ]
-"299
-[; ;newmain.c: 299:             buf--;
-[e -- _buf -> 1 `i ]
-"300
-[; ;newmain.c: 300:         }
-}
+[; ;newmain.c: 282:         while(buf>0){
+[e $ > _buf -> 0 `i 345  ]
 [e :U 346 ]
-"284
-[; ;newmain.c: 284:         while(buf>0){
-[e $ > _buf -> 0 `i 347  ]
-[e :U 348 ]
-"301
-[; ;newmain.c: 301:     }
+"299
+[; ;newmain.c: 299:     }
 }
-[e $U 349  ]
-"302
-[; ;newmain.c: 302:     else if(original[1]>val){
-[e :U 345 ]
-[e $ ! > *U + &U _original * -> -> -> 1 `i `ui `ux -> -> # *U &U _original `ui `ux _val 350  ]
+[e $U 347  ]
+"300
+[; ;newmain.c: 300:     else if(original[1]>val){
+[e :U 343 ]
+[e $ ! > *U + &U _original * -> -> -> 1 `i `ui `ux -> -> # *U &U _original `ui `ux _val 348  ]
 {
-"303
-[; ;newmain.c: 303:         int buf = original[1]-val;
+"301
+[; ;newmain.c: 301:         int buf = original[1]-val;
 [v _buf `i ~T0 @X0 1 a ]
 [e = _buf - *U + &U _original * -> -> -> 1 `i `ui `ux -> -> # *U &U _original `ui `ux _val ]
-"304
-[; ;newmain.c: 304:         while(buf>0){
-[e $U 351  ]
-[e :U 352 ]
+"302
+[; ;newmain.c: 302:         while(buf>0){
+[e $U 349  ]
+[e :U 350 ]
 {
-"305
-[; ;newmain.c: 305:             rgbarray tempc = rgb[1];
+"303
+[; ;newmain.c: 303:             rgbarray tempc = rgb[1];
 [v _tempc `S1 ~T0 @X0 1 a ]
 [e = _tempc *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"306
-[; ;newmain.c: 306:             rgbarray tempd = rgb[2];
+"304
+[; ;newmain.c: 304:             rgbarray tempd = rgb[2];
 [v _tempd `S1 ~T0 @X0 1 a ]
 [e = _tempd *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"307
-[; ;newmain.c: 307:             rgb[1].r = rgb[20].r;rgb[2].r = rgb[21].r;
+"305
+[; ;newmain.c: 305:             rgb[1].r = rgb[20].r;rgb[2].r = rgb[21].r;
 [e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"308
-[; ;newmain.c: 308:             rgb[1].g = rgb[20].g;rgb[2].g = rgb[21].g;
+"306
+[; ;newmain.c: 306:             rgb[1].g = rgb[20].g;rgb[2].g = rgb[21].g;
 [e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"309
-[; ;newmain.c: 309:             rgb[1].b = rgb[20].b;rgb[2].b = rgb[21].b;
+"307
+[; ;newmain.c: 307:             rgb[1].b = rgb[20].b;rgb[2].b = rgb[21].b;
 [e = . *U + &U _rgb * -> -> -> 1 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 2 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"310
-[; ;newmain.c: 310:             rgb[20].r = rgb[11].r;rgb[21].r = rgb[8].r;
+"308
+[; ;newmain.c: 308:             rgb[20].r = rgb[11].r;rgb[21].r = rgb[8].r;
 [e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"311
-[; ;newmain.c: 311:             rgb[20].g = rgb[11].g;rgb[21].g = rgb[8].g;
+"309
+[; ;newmain.c: 309:             rgb[20].g = rgb[11].g;rgb[21].g = rgb[8].g;
 [e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"312
-[; ;newmain.c: 312:             rgb[20].b = rgb[11].b;rgb[21].b = rgb[8].b;
+"310
+[; ;newmain.c: 310:             rgb[20].b = rgb[11].b;rgb[21].b = rgb[8].b;
 [e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"313
-[; ;newmain.c: 313:             rgb[11].r = rgb[18].r;rgb[8].r = rgb[19].r;
+"311
+[; ;newmain.c: 311:             rgb[11].r = rgb[18].r;rgb[8].r = rgb[19].r;
 [e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"314
-[; ;newmain.c: 314:             rgb[11].g = rgb[18].g;rgb[8].g = rgb[19].g;
+"312
+[; ;newmain.c: 312:             rgb[11].g = rgb[18].g;rgb[8].g = rgb[19].g;
 [e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"315
-[; ;newmain.c: 315:             rgb[11].b = rgb[18].b;rgb[8].b = rgb[19].b;
+"313
+[; ;newmain.c: 313:             rgb[11].b = rgb[18].b;rgb[8].b = rgb[19].b;
 [e = . *U + &U _rgb * -> -> -> 11 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 8 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"316
-[; ;newmain.c: 316:             rgb[18].r = tempc.r;rgb[19].r = tempd.r;
+"314
+[; ;newmain.c: 314:             rgb[18].r = tempc.r;rgb[19].r = tempd.r;
 [e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempc 0 ]
 [e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempd 0 ]
-"317
-[; ;newmain.c: 317:             rgb[18].g = tempc.g;rgb[19].g = tempd.g;
+"315
+[; ;newmain.c: 315:             rgb[18].g = tempc.g;rgb[19].g = tempd.g;
 [e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempc 1 ]
 [e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempd 1 ]
-"318
-[; ;newmain.c: 318:             rgb[18].b = tempc.b;rgb[19].b = tempd.b;
+"316
+[; ;newmain.c: 316:             rgb[18].b = tempc.b;rgb[19].b = tempd.b;
 [e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempc 2 ]
 [e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempd 2 ]
-"319
-[; ;newmain.c: 319:             buf--;
+"317
+[; ;newmain.c: 317:             buf--;
 [e -- _buf -> 1 `i ]
-"320
-[; ;newmain.c: 320:         }
+"318
+[; ;newmain.c: 318:         }
 }
-[e :U 351 ]
-"304
-[; ;newmain.c: 304:         while(buf>0){
-[e $ > _buf -> 0 `i 352  ]
-[e :U 353 ]
-"321
-[; ;newmain.c: 321:     }
-}
-[e :U 350 ]
 [e :U 349 ]
-"322
-[; ;newmain.c: 322: }
-[e :UE 343 ]
+"302
+[; ;newmain.c: 302:         while(buf>0){
+[e $ > _buf -> 0 `i 350  ]
+[e :U 351 ]
+"319
+[; ;newmain.c: 319:     }
 }
-"324
-[; ;newmain.c: 324: void rotate_sidetop(int val){
+[e :U 348 ]
+[e :U 347 ]
+"320
+[; ;newmain.c: 320: }
+[e :UE 341 ]
+}
+"322
+[; ;newmain.c: 322: void rotate_sidetop(int val){
 [v _rotate_sidetop `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _rotate_sidetop ]
 [v _val `i ~T0 @X0 1 r1 ]
 [f ]
-"326
-[; ;newmain.c: 326:     if(val > 3){
-[e $ ! > _val -> 3 `i 355  ]
+"324
+[; ;newmain.c: 324:     if(val > 3){
+[e $ ! > _val -> 3 `i 353  ]
 {
-"327
-[; ;newmain.c: 327:         val = 3;
+"325
+[; ;newmain.c: 325:         val = 3;
 [e = _val -> 3 `i ]
+"326
+[; ;newmain.c: 326:     }
+}
+[e :U 353 ]
+"327
+[; ;newmain.c: 327:     if(val>original[4]){
+[e $ ! > _val *U + &U _original * -> -> -> 4 `i `ui `ux -> -> # *U &U _original `ui `ux 354  ]
+{
 "328
-[; ;newmain.c: 328:     }
+[; ;newmain.c: 328:         int buf = val-original[4];
+[v _buf `i ~T0 @X0 1 a ]
+[e = _buf - _val *U + &U _original * -> -> -> 4 `i `ui `ux -> -> # *U &U _original `ui `ux ]
+"329
+[; ;newmain.c: 329:         while(buf>0){
+[e $U 355  ]
+[e :U 356 ]
+{
+"330
+[; ;newmain.c: 330:             rgbarray tempa = rgb[4];
+[v _tempa `S1 ~T0 @X0 1 a ]
+[e = _tempa *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
+"331
+[; ;newmain.c: 331:             rgbarray tempb = rgb[7];
+[v _tempb `S1 ~T0 @X0 1 a ]
+[e = _tempb *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
+"332
+[; ;newmain.c: 332:             rgb[4].r = rgb[16].r;rgb[7].r = rgb[19].r;
+[e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"333
+[; ;newmain.c: 333:             rgb[4].g = rgb[16].g;rgb[7].g = rgb[19].g;
+[e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"334
+[; ;newmain.c: 334:             rgb[4].b = rgb[16].b;rgb[7].b = rgb[19].b;
+[e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"335
+[; ;newmain.c: 335:             rgb[16].r = rgb[14].r;rgb[19].r = rgb[13].r;
+[e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"336
+[; ;newmain.c: 336:             rgb[16].g = rgb[14].g;rgb[19].g = rgb[13].g;
+[e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"337
+[; ;newmain.c: 337:             rgb[16].b = rgb[14].b;rgb[19].b = rgb[13].b;
+[e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"338
+[; ;newmain.c: 338:             rgb[14].r = rgb[20].r;rgb[13].r = rgb[23].r;
+[e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"339
+[; ;newmain.c: 339:             rgb[14].g = rgb[20].g;rgb[13].g = rgb[23].g;
+[e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"340
+[; ;newmain.c: 340:             rgb[14].b = rgb[20].b;rgb[13].b = rgb[23].b;
+[e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"341
+[; ;newmain.c: 341:             rgb[20].r = tempa.r;rgb[23].r = tempb.r;
+[e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempa 0 ]
+[e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempb 0 ]
+"342
+[; ;newmain.c: 342:             rgb[20].g = tempa.g;rgb[23].g = tempb.g;
+[e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempa 1 ]
+[e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempb 1 ]
+"343
+[; ;newmain.c: 343:             rgb[20].b = tempa.b;rgb[23].b = tempb.b;
+[e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempa 2 ]
+[e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempb 2 ]
+"344
+[; ;newmain.c: 344:             buf--;
+[e -- _buf -> 1 `i ]
+"345
+[; ;newmain.c: 345:         }
 }
 [e :U 355 ]
 "329
-[; ;newmain.c: 329:     if(val>original[4]){
-[e $ ! > _val *U + &U _original * -> -> -> 4 `i `ui `ux -> -> # *U &U _original `ui `ux 356  ]
-{
-"330
-[; ;newmain.c: 330:         int buf = val-original[4];
-[v _buf `i ~T0 @X0 1 a ]
-[e = _buf - _val *U + &U _original * -> -> -> 4 `i `ui `ux -> -> # *U &U _original `ui `ux ]
-"331
-[; ;newmain.c: 331:         while(buf>0){
-[e $U 357  ]
-[e :U 358 ]
-{
-"332
-[; ;newmain.c: 332:             rgbarray tempa = rgb[4];
-[v _tempa `S1 ~T0 @X0 1 a ]
-[e = _tempa *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"333
-[; ;newmain.c: 333:             rgbarray tempb = rgb[7];
-[v _tempb `S1 ~T0 @X0 1 a ]
-[e = _tempb *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"334
-[; ;newmain.c: 334:             rgb[4].r = rgb[16].r;rgb[7].r = rgb[19].r;
-[e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"335
-[; ;newmain.c: 335:             rgb[4].g = rgb[16].g;rgb[7].g = rgb[19].g;
-[e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"336
-[; ;newmain.c: 336:             rgb[4].b = rgb[16].b;rgb[7].b = rgb[19].b;
-[e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"337
-[; ;newmain.c: 337:             rgb[16].r = rgb[14].r;rgb[19].r = rgb[13].r;
-[e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"338
-[; ;newmain.c: 338:             rgb[16].g = rgb[14].g;rgb[19].g = rgb[13].g;
-[e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"339
-[; ;newmain.c: 339:             rgb[16].b = rgb[14].b;rgb[19].b = rgb[13].b;
-[e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"340
-[; ;newmain.c: 340:             rgb[14].r = rgb[20].r;rgb[13].r = rgb[23].r;
-[e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"341
-[; ;newmain.c: 341:             rgb[14].g = rgb[20].g;rgb[13].g = rgb[23].g;
-[e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"342
-[; ;newmain.c: 342:             rgb[14].b = rgb[20].b;rgb[13].b = rgb[23].b;
-[e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"343
-[; ;newmain.c: 343:             rgb[20].r = tempa.r;rgb[23].r = tempb.r;
-[e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempa 0 ]
-[e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempb 0 ]
-"344
-[; ;newmain.c: 344:             rgb[20].g = tempa.g;rgb[23].g = tempb.g;
-[e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempa 1 ]
-[e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempb 1 ]
-"345
-[; ;newmain.c: 345:             rgb[20].b = tempa.b;rgb[23].b = tempb.b;
-[e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempa 2 ]
-[e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempb 2 ]
-"346
-[; ;newmain.c: 346:             buf--;
-[e -- _buf -> 1 `i ]
-"347
-[; ;newmain.c: 347:         }
-}
+[; ;newmain.c: 329:         while(buf>0){
+[e $ > _buf -> 0 `i 356  ]
 [e :U 357 ]
-"331
-[; ;newmain.c: 331:         while(buf>0){
-[e $ > _buf -> 0 `i 358  ]
-[e :U 359 ]
-"348
-[; ;newmain.c: 348:     }
+"346
+[; ;newmain.c: 346:     }
 }
-[e $U 360  ]
-"349
-[; ;newmain.c: 349:     else if(original[4]>val){
-[e :U 356 ]
-[e $ ! > *U + &U _original * -> -> -> 4 `i `ui `ux -> -> # *U &U _original `ui `ux _val 361  ]
+[e $U 358  ]
+"347
+[; ;newmain.c: 347:     else if(original[4]>val){
+[e :U 354 ]
+[e $ ! > *U + &U _original * -> -> -> 4 `i `ui `ux -> -> # *U &U _original `ui `ux _val 359  ]
 {
-"350
-[; ;newmain.c: 350:         int buf = original[4]-val;
+"348
+[; ;newmain.c: 348:         int buf = original[4]-val;
 [v _buf `i ~T0 @X0 1 a ]
 [e = _buf - *U + &U _original * -> -> -> 4 `i `ui `ux -> -> # *U &U _original `ui `ux _val ]
-"351
-[; ;newmain.c: 351:         while(buf>0){
-[e $U 362  ]
-[e :U 363 ]
+"349
+[; ;newmain.c: 349:         while(buf>0){
+[e $U 360  ]
+[e :U 361 ]
 {
-"352
-[; ;newmain.c: 352:             rgbarray tempc = rgb[4];
+"350
+[; ;newmain.c: 350:             rgbarray tempc = rgb[4];
 [v _tempc `S1 ~T0 @X0 1 a ]
 [e = _tempc *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"353
-[; ;newmain.c: 353:             rgbarray tempd = rgb[7];
+"351
+[; ;newmain.c: 351:             rgbarray tempd = rgb[7];
 [v _tempd `S1 ~T0 @X0 1 a ]
 [e = _tempd *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"354
-[; ;newmain.c: 354:             rgb[4].r = rgb[20].r;rgb[7].r = rgb[23].r;
+"352
+[; ;newmain.c: 352:             rgb[4].r = rgb[20].r;rgb[7].r = rgb[23].r;
 [e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"355
-[; ;newmain.c: 355:             rgb[4].g = rgb[20].g;rgb[7].g = rgb[23].g;
+"353
+[; ;newmain.c: 353:             rgb[4].g = rgb[20].g;rgb[7].g = rgb[23].g;
 [e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"356
-[; ;newmain.c: 356:             rgb[4].b = rgb[20].b;rgb[7].b = rgb[23].b;
+"354
+[; ;newmain.c: 354:             rgb[4].b = rgb[20].b;rgb[7].b = rgb[23].b;
 [e = . *U + &U _rgb * -> -> -> 4 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 7 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"357
-[; ;newmain.c: 357:             rgb[20].r = rgb[14].r;rgb[23].r = rgb[13].r;
+"355
+[; ;newmain.c: 355:             rgb[20].r = rgb[14].r;rgb[23].r = rgb[13].r;
 [e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"358
-[; ;newmain.c: 358:             rgb[20].g = rgb[14].g;rgb[23].g = rgb[13].g;
+"356
+[; ;newmain.c: 356:             rgb[20].g = rgb[14].g;rgb[23].g = rgb[13].g;
 [e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"359
-[; ;newmain.c: 359:             rgb[20].b = rgb[14].b;rgb[23].b = rgb[13].b;
+"357
+[; ;newmain.c: 357:             rgb[20].b = rgb[14].b;rgb[23].b = rgb[13].b;
 [e = . *U + &U _rgb * -> -> -> 20 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 23 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"360
-[; ;newmain.c: 360:             rgb[14].r = rgb[16].r;rgb[13].r = rgb[19].r;
+"358
+[; ;newmain.c: 358:             rgb[14].r = rgb[16].r;rgb[13].r = rgb[19].r;
 [e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"361
-[; ;newmain.c: 361:             rgb[14].g = rgb[16].g;rgb[13].g = rgb[19].g;
+"359
+[; ;newmain.c: 359:             rgb[14].g = rgb[16].g;rgb[13].g = rgb[19].g;
 [e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"362
-[; ;newmain.c: 362:             rgb[14].b = rgb[16].b;rgb[13].b = rgb[19].b;
+"360
+[; ;newmain.c: 360:             rgb[14].b = rgb[16].b;rgb[13].b = rgb[19].b;
 [e = . *U + &U _rgb * -> -> -> 14 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 13 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"363
-[; ;newmain.c: 363:             rgb[16].r = tempc.r;rgb[19].r = tempd.r;
+"361
+[; ;newmain.c: 361:             rgb[16].r = tempc.r;rgb[19].r = tempd.r;
 [e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempc 0 ]
 [e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempd 0 ]
-"364
-[; ;newmain.c: 364:             rgb[16].g = tempc.g;rgb[19].g = tempd.g;
+"362
+[; ;newmain.c: 362:             rgb[16].g = tempc.g;rgb[19].g = tempd.g;
 [e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempc 1 ]
 [e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempd 1 ]
-"365
-[; ;newmain.c: 365:             rgb[16].b = tempc.b;rgb[19].b = tempd.b;
+"363
+[; ;newmain.c: 363:             rgb[16].b = tempc.b;rgb[19].b = tempd.b;
 [e = . *U + &U _rgb * -> -> -> 16 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempc 2 ]
 [e = . *U + &U _rgb * -> -> -> 19 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempd 2 ]
-"366
-[; ;newmain.c: 366:             buf--;
+"364
+[; ;newmain.c: 364:             buf--;
 [e -- _buf -> 1 `i ]
-"367
-[; ;newmain.c: 367:         }
+"365
+[; ;newmain.c: 365:         }
 }
-[e :U 362 ]
-"351
-[; ;newmain.c: 351:         while(buf>0){
-[e $ > _buf -> 0 `i 363  ]
-[e :U 364 ]
-"368
-[; ;newmain.c: 368:     }
-}
-[e :U 361 ]
 [e :U 360 ]
-"369
-[; ;newmain.c: 369: }
-[e :UE 354 ]
+"349
+[; ;newmain.c: 349:         while(buf>0){
+[e $ > _buf -> 0 `i 361  ]
+[e :U 362 ]
+"366
+[; ;newmain.c: 366:     }
 }
-"371
-[; ;newmain.c: 371: void rotate_sidebot(int val){
+[e :U 359 ]
+[e :U 358 ]
+"367
+[; ;newmain.c: 367: }
+[e :UE 352 ]
+}
+"369
+[; ;newmain.c: 369: void rotate_sidebot(int val){
 [v _rotate_sidebot `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _rotate_sidebot ]
 [v _val `i ~T0 @X0 1 r1 ]
 [f ]
-"373
-[; ;newmain.c: 373:     if(val > 3){
-[e $ ! > _val -> 3 `i 366  ]
+"371
+[; ;newmain.c: 371:     if(val > 3){
+[e $ ! > _val -> 3 `i 364  ]
 {
-"374
-[; ;newmain.c: 374:         val = 3;
+"372
+[; ;newmain.c: 372:         val = 3;
 [e = _val -> 3 `i ]
+"373
+[; ;newmain.c: 373:     }
+}
+[e :U 364 ]
+"374
+[; ;newmain.c: 374:     if(val>original[5]){
+[e $ ! > _val *U + &U _original * -> -> -> 5 `i `ui `ux -> -> # *U &U _original `ui `ux 365  ]
+{
 "375
-[; ;newmain.c: 375:     }
+[; ;newmain.c: 375:         int buf = val-original[5];
+[v _buf `i ~T0 @X0 1 a ]
+[e = _buf - _val *U + &U _original * -> -> -> 5 `i `ui `ux -> -> # *U &U _original `ui `ux ]
+"376
+[; ;newmain.c: 376:         while(buf>0){
+[e $U 366  ]
+[e :U 367 ]
+{
+"377
+[; ;newmain.c: 377:             rgbarray tempa = rgb[5];
+[v _tempa `S1 ~T0 @X0 1 a ]
+[e = _tempa *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
+"378
+[; ;newmain.c: 378:             rgbarray tempb = rgb[6];
+[v _tempb `S1 ~T0 @X0 1 a ]
+[e = _tempb *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
+"379
+[; ;newmain.c: 379:             rgb[5].r = rgb[17].r;rgb[6].r = rgb[18].r;
+[e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"380
+[; ;newmain.c: 380:             rgb[5].g = rgb[17].g;rgb[6].g = rgb[18].g;
+[e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"381
+[; ;newmain.c: 381:             rgb[5].b = rgb[17].b;rgb[6].b = rgb[18].b;
+[e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"382
+[; ;newmain.c: 382:             rgb[17].r = rgb[15].r;rgb[18].r = rgb[12].r;
+[e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"383
+[; ;newmain.c: 383:             rgb[17].g = rgb[15].g;rgb[18].g = rgb[12].g;
+[e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"384
+[; ;newmain.c: 384:             rgb[17].b = rgb[15].b;rgb[18].b = rgb[12].b;
+[e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"385
+[; ;newmain.c: 385:             rgb[15].r = rgb[21].r;rgb[12].r = rgb[22].r;
+[e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+[e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
+"386
+[; ;newmain.c: 386:             rgb[15].g = rgb[21].g;rgb[12].g = rgb[22].g;
+[e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+[e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
+"387
+[; ;newmain.c: 387:             rgb[15].b = rgb[21].b;rgb[12].b = rgb[22].b;
+[e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+[e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
+"388
+[; ;newmain.c: 388:             rgb[21].r = tempa.r;rgb[22].r = tempb.r;
+[e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempa 0 ]
+[e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempb 0 ]
+"389
+[; ;newmain.c: 389:             rgb[21].g = tempa.g;rgb[22].g = tempb.g;
+[e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempa 1 ]
+[e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempb 1 ]
+"390
+[; ;newmain.c: 390:             rgb[21].b = tempa.b;rgb[22].b = tempb.b;
+[e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempa 2 ]
+[e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempb 2 ]
+"391
+[; ;newmain.c: 391:             buf--;
+[e -- _buf -> 1 `i ]
+"392
+[; ;newmain.c: 392:         }
 }
 [e :U 366 ]
 "376
-[; ;newmain.c: 376:     if(val>original[5]){
-[e $ ! > _val *U + &U _original * -> -> -> 5 `i `ui `ux -> -> # *U &U _original `ui `ux 367  ]
-{
-"377
-[; ;newmain.c: 377:         int buf = val-original[5];
-[v _buf `i ~T0 @X0 1 a ]
-[e = _buf - _val *U + &U _original * -> -> -> 5 `i `ui `ux -> -> # *U &U _original `ui `ux ]
-"378
-[; ;newmain.c: 378:         while(buf>0){
-[e $U 368  ]
-[e :U 369 ]
-{
-"379
-[; ;newmain.c: 379:             rgbarray tempa = rgb[5];
-[v _tempa `S1 ~T0 @X0 1 a ]
-[e = _tempa *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"380
-[; ;newmain.c: 380:             rgbarray tempb = rgb[6];
-[v _tempb `S1 ~T0 @X0 1 a ]
-[e = _tempb *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"381
-[; ;newmain.c: 381:             rgb[5].r = rgb[17].r;rgb[6].r = rgb[18].r;
-[e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"382
-[; ;newmain.c: 382:             rgb[5].g = rgb[17].g;rgb[6].g = rgb[18].g;
-[e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"383
-[; ;newmain.c: 383:             rgb[5].b = rgb[17].b;rgb[6].b = rgb[18].b;
-[e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"384
-[; ;newmain.c: 384:             rgb[17].r = rgb[15].r;rgb[18].r = rgb[12].r;
-[e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"385
-[; ;newmain.c: 385:             rgb[17].g = rgb[15].g;rgb[18].g = rgb[12].g;
-[e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"386
-[; ;newmain.c: 386:             rgb[17].b = rgb[15].b;rgb[18].b = rgb[12].b;
-[e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"387
-[; ;newmain.c: 387:             rgb[15].r = rgb[21].r;rgb[12].r = rgb[22].r;
-[e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-[e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"388
-[; ;newmain.c: 388:             rgb[15].g = rgb[21].g;rgb[12].g = rgb[22].g;
-[e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-[e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"389
-[; ;newmain.c: 389:             rgb[15].b = rgb[21].b;rgb[12].b = rgb[22].b;
-[e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-[e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"390
-[; ;newmain.c: 390:             rgb[21].r = tempa.r;rgb[22].r = tempb.r;
-[e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempa 0 ]
-[e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempb 0 ]
-"391
-[; ;newmain.c: 391:             rgb[21].g = tempa.g;rgb[22].g = tempb.g;
-[e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempa 1 ]
-[e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempb 1 ]
-"392
-[; ;newmain.c: 392:             rgb[21].b = tempa.b;rgb[22].b = tempb.b;
-[e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempa 2 ]
-[e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempb 2 ]
-"393
-[; ;newmain.c: 393:             buf--;
-[e -- _buf -> 1 `i ]
-"394
-[; ;newmain.c: 394:         }
-}
+[; ;newmain.c: 376:         while(buf>0){
+[e $ > _buf -> 0 `i 367  ]
 [e :U 368 ]
-"378
-[; ;newmain.c: 378:         while(buf>0){
-[e $ > _buf -> 0 `i 369  ]
-[e :U 370 ]
-"395
-[; ;newmain.c: 395:     }
+"393
+[; ;newmain.c: 393:     }
 }
-[e $U 371  ]
-"396
-[; ;newmain.c: 396:     else if(original[5]>val){
-[e :U 367 ]
-[e $ ! > *U + &U _original * -> -> -> 5 `i `ui `ux -> -> # *U &U _original `ui `ux _val 372  ]
+[e $U 369  ]
+"394
+[; ;newmain.c: 394:     else if(original[5]>val){
+[e :U 365 ]
+[e $ ! > *U + &U _original * -> -> -> 5 `i `ui `ux -> -> # *U &U _original `ui `ux _val 370  ]
 {
-"397
-[; ;newmain.c: 397:         int buf = original[5]-val;
+"395
+[; ;newmain.c: 395:         int buf = original[5]-val;
 [v _buf `i ~T0 @X0 1 a ]
 [e = _buf - *U + &U _original * -> -> -> 5 `i `ui `ux -> -> # *U &U _original `ui `ux _val ]
-"398
-[; ;newmain.c: 398:         while(buf>0){
-[e $U 373  ]
-[e :U 374 ]
+"396
+[; ;newmain.c: 396:         while(buf>0){
+[e $U 371  ]
+[e :U 372 ]
 {
-"399
-[; ;newmain.c: 399:             rgbarray tempc = rgb[5];
+"397
+[; ;newmain.c: 397:             rgbarray tempc = rgb[5];
 [v _tempc `S1 ~T0 @X0 1 a ]
 [e = _tempc *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"400
-[; ;newmain.c: 400:             rgbarray tempd = rgb[6];
+"398
+[; ;newmain.c: 398:             rgbarray tempd = rgb[6];
 [v _tempd `S1 ~T0 @X0 1 a ]
 [e = _tempd *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux ]
-"401
-[; ;newmain.c: 401:             rgb[5].r = rgb[21].r;rgb[6].r = rgb[22].r;
+"399
+[; ;newmain.c: 399:             rgb[5].r = rgb[21].r;rgb[6].r = rgb[22].r;
 [e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"402
-[; ;newmain.c: 402:             rgb[5].g = rgb[21].g;rgb[6].g = rgb[22].g;
+"400
+[; ;newmain.c: 400:             rgb[5].g = rgb[21].g;rgb[6].g = rgb[22].g;
 [e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"403
-[; ;newmain.c: 403:             rgb[5].b = rgb[21].b;rgb[6].b = rgb[22].b;
+"401
+[; ;newmain.c: 401:             rgb[5].b = rgb[21].b;rgb[6].b = rgb[22].b;
 [e = . *U + &U _rgb * -> -> -> 5 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 6 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"404
-[; ;newmain.c: 404:             rgb[21].r = rgb[15].r;rgb[22].r = rgb[12].r;
+"402
+[; ;newmain.c: 402:             rgb[21].r = rgb[15].r;rgb[22].r = rgb[12].r;
 [e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"405
-[; ;newmain.c: 405:             rgb[21].g = rgb[15].g;rgb[22].g = rgb[12].g;
+"403
+[; ;newmain.c: 403:             rgb[21].g = rgb[15].g;rgb[22].g = rgb[12].g;
 [e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"406
-[; ;newmain.c: 406:             rgb[21].b = rgb[15].b;rgb[22].b = rgb[12].b;
+"404
+[; ;newmain.c: 404:             rgb[21].b = rgb[15].b;rgb[22].b = rgb[12].b;
 [e = . *U + &U _rgb * -> -> -> 21 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 22 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"407
-[; ;newmain.c: 407:             rgb[15].r = rgb[17].r;rgb[12].r = rgb[18].r;
+"405
+[; ;newmain.c: 405:             rgb[15].r = rgb[17].r;rgb[12].r = rgb[18].r;
 [e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
 [e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 ]
-"408
-[; ;newmain.c: 408:             rgb[15].g = rgb[17].g;rgb[12].g = rgb[18].g;
+"406
+[; ;newmain.c: 406:             rgb[15].g = rgb[17].g;rgb[12].g = rgb[18].g;
 [e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
 [e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 ]
-"409
-[; ;newmain.c: 409:             rgb[15].b = rgb[17].b;rgb[12].b = rgb[18].b;
+"407
+[; ;newmain.c: 407:             rgb[15].b = rgb[17].b;rgb[12].b = rgb[18].b;
 [e = . *U + &U _rgb * -> -> -> 15 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
 [e = . *U + &U _rgb * -> -> -> 12 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 ]
-"410
-[; ;newmain.c: 410:             rgb[17].r = tempc.r;rgb[18].r = tempd.r;
+"408
+[; ;newmain.c: 408:             rgb[17].r = tempc.r;rgb[18].r = tempd.r;
 [e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempc 0 ]
 [e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 0 . _tempd 0 ]
-"411
-[; ;newmain.c: 411:             rgb[17].g = tempc.g;rgb[18].g = tempd.g;
+"409
+[; ;newmain.c: 409:             rgb[17].g = tempc.g;rgb[18].g = tempd.g;
 [e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempc 1 ]
 [e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 1 . _tempd 1 ]
-"412
-[; ;newmain.c: 412:             rgb[17].b = tempc.b;rgb[18].b = tempd.b;
+"410
+[; ;newmain.c: 410:             rgb[17].b = tempc.b;rgb[18].b = tempd.b;
 [e = . *U + &U _rgb * -> -> -> 17 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempc 2 ]
 [e = . *U + &U _rgb * -> -> -> 18 `i `ui `ux -> -> # *U &U _rgb `ui `ux 2 . _tempd 2 ]
-"413
-[; ;newmain.c: 413:             buf--;
+"411
+[; ;newmain.c: 411:             buf--;
 [e -- _buf -> 1 `i ]
-"414
-[; ;newmain.c: 414:         }
+"412
+[; ;newmain.c: 412:         }
 }
-[e :U 373 ]
-"398
-[; ;newmain.c: 398:         while(buf>0){
-[e $ > _buf -> 0 `i 374  ]
-[e :U 375 ]
-"415
-[; ;newmain.c: 415:     }
-}
-[e :U 372 ]
 [e :U 371 ]
-"416
-[; ;newmain.c: 416: }
-[e :UE 365 ]
+"396
+[; ;newmain.c: 396:         while(buf>0){
+[e $ > _buf -> 0 `i 372  ]
+[e :U 373 ]
+"413
+[; ;newmain.c: 413:     }
+}
+[e :U 370 ]
+[e :U 369 ]
+"414
+[; ;newmain.c: 414: }
+[e :UE 363 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"418
-[; ;newmain.c: 418: void main(void) {
+"416
+[; ;newmain.c: 416: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"419
-[; ;newmain.c: 419:     initial();
+"417
+[; ;newmain.c: 417:     initial();
 [e ( _initial ..  ]
-"420
-[; ;newmain.c: 420:     ADC_Initialize();
+"418
+[; ;newmain.c: 418:     ADC_Initialize();
 [e ( _ADC_Initialize ..  ]
-"421
-[; ;newmain.c: 421:     TRISD =0;
+"419
+[; ;newmain.c: 419:     TRISD =0;
 [e = _TRISD -> -> 0 `i `uc ]
-"422
-[; ;newmain.c: 422:     LATD = 0;
+"420
+[; ;newmain.c: 420:     LATD = 0;
 [e = _LATD -> -> 0 `i `uc ]
+"421
+[; ;newmain.c: 421:     TRISB =0;
+[e = _TRISB -> -> 0 `i `uc ]
+"422
+[; ;newmain.c: 422:     LATB = 0;
+[e = _LATB -> -> 0 `i `uc ]
 "423
 [; ;newmain.c: 423:     LATDbits.LATD3 = 1;
 [e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
@@ -2010,9 +2031,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;newmain.c: 426:     for(j=0; j<6; j++){
 {
 [e = _j -> 0 `i ]
-[e $ < _j -> 6 `i 377  ]
-[e $U 378  ]
-[e :U 377 ]
+[e $ < _j -> 6 `i 375  ]
+[e $U 376  ]
+[e :U 375 ]
 {
 "429
 [; ;newmain.c: 429:         original[j] = 0;
@@ -2021,8 +2042,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;newmain.c: 430:     }
 }
 [e ++ _j -> 1 `i ]
-[e $ < _j -> 6 `i 377  ]
-[e :U 378 ]
+[e $ < _j -> 6 `i 375  ]
+[e :U 376 ]
 }
 "431
 [; ;newmain.c: 431:     int turn = 0;
@@ -2030,11 +2051,49 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _turn -> 0 `i ]
 "432
 [; ;newmain.c: 432:     while(1){
-[e :U 381 ]
+[e :U 379 ]
 {
+"434
+[; ;newmain.c: 434:             if(turn == 0) {
+[e $ ! == _turn -> 0 `i 381  ]
+{
+"435
+[; ;newmain.c: 435:                 int val = ADC_Read(0);
+[v _val `i ~T0 @X0 1 a ]
+[e = _val ( _ADC_Read (1 -> 0 `i ]
+"436
+[; ;newmain.c: 436:                 rotate_top(val/300);
+[e ( _rotate_top (1 / _val -> 300 `i ]
+"437
+[; ;newmain.c: 437:                 original[0] = val/300;
+[e = *U + &U _original * -> -> -> 0 `i `ui `ux -> -> # *U &U _original `ui `ux / _val -> 300 `i ]
+"438
+[; ;newmain.c: 438:             }
+}
+[e $U 382  ]
+"439
+[; ;newmain.c: 439:             else if(turn == 1) {
+[e :U 381 ]
+[e $ ! == _turn -> 1 `i 383  ]
+{
+"440
+[; ;newmain.c: 440:                 int val = ADC_Read(1);
+[v _val `i ~T0 @X0 1 a ]
+[e = _val ( _ADC_Read (1 -> 1 `i ]
+"441
+[; ;newmain.c: 441:                 rotate_bot(val/300);
+[e ( _rotate_bot (1 / _val -> 300 `i ]
+"442
+[; ;newmain.c: 442:                 original[1] = val/300;
+[e = *U + &U _original * -> -> -> 1 `i `ui `ux -> -> # *U &U _original `ui `ux / _val -> 300 `i ]
+"443
+[; ;newmain.c: 443:             }
+}
+[e $U 384  ]
 "444
-[; ;newmain.c: 444:             if(turn == 2) {
-[e $ ! == _turn -> 2 `i 383  ]
+[; ;newmain.c: 444:             else if(turn == 2) {
+[e :U 383 ]
+[e $ ! == _turn -> 2 `i 385  ]
 {
 "445
 [; ;newmain.c: 445:                 int val = ADC_Read(6);
@@ -2049,11 +2108,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "448
 [; ;newmain.c: 448:             }
 }
-[e $U 384  ]
+[e $U 386  ]
 "449
 [; ;newmain.c: 449:             else if(turn == 3) {
-[e :U 383 ]
-[e $ ! == _turn -> 3 `i 385  ]
+[e :U 385 ]
+[e $ ! == _turn -> 3 `i 387  ]
 {
 "450
 [; ;newmain.c: 450:                 int val = ADC_Read(7);
@@ -2068,8 +2127,50 @@ Version 4.0 HI-TECH Software Intermediate Code
 "453
 [; ;newmain.c: 453:             }
 }
-[e :U 385 ]
+[e $U 388  ]
+"454
+[; ;newmain.c: 454:             else if(turn == 4) {
+[e :U 387 ]
+[e $ ! == _turn -> 4 `i 389  ]
+{
+"455
+[; ;newmain.c: 455:                 int val = ADC_Read(4);
+[v _val `i ~T0 @X0 1 a ]
+[e = _val ( _ADC_Read (1 -> 4 `i ]
+"456
+[; ;newmain.c: 456:                 rotate_sidetop(val/300);
+[e ( _rotate_sidetop (1 / _val -> 300 `i ]
+"457
+[; ;newmain.c: 457:                 original[4] = val/300;
+[e = *U + &U _original * -> -> -> 4 `i `ui `ux -> -> # *U &U _original `ui `ux / _val -> 300 `i ]
+"458
+[; ;newmain.c: 458:             }
+}
+[e $U 390  ]
+"459
+[; ;newmain.c: 459:             else if(turn == 5) {
+[e :U 389 ]
+[e $ ! == _turn -> 5 `i 391  ]
+{
+"460
+[; ;newmain.c: 460:                 int val = ADC_Read(5);
+[v _val `i ~T0 @X0 1 a ]
+[e = _val ( _ADC_Read (1 -> 5 `i ]
+"461
+[; ;newmain.c: 461:                 rotate_sidebot(val/300);
+[e ( _rotate_sidebot (1 / _val -> 300 `i ]
+"462
+[; ;newmain.c: 462:                 original[5] = val/300;
+[e = *U + &U _original * -> -> -> 5 `i `ui `ux -> -> # *U &U _original `ui `ux / _val -> 300 `i ]
+"463
+[; ;newmain.c: 463:             }
+}
+[e :U 391 ]
+[e :U 390 ]
+[e :U 388 ]
+[e :U 386 ]
 [e :U 384 ]
+[e :U 382 ]
 "466
 [; ;newmain.c: 466:         LATDbits.LATD0 = rgb[i].r;
 [e = . . _LATDbits 0 0 -> . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 0 `uc ]
@@ -2079,63 +2180,113 @@ Version 4.0 HI-TECH Software Intermediate Code
 "468
 [; ;newmain.c: 468:         LATDbits.LATD2 = rgb[i].b;
 [e = . . _LATDbits 0 2 -> . *U + &U _rgb * -> -> _i `ui `ux -> -> # *U &U _rgb `ui `ux 2 `uc ]
+"469
+[; ;newmain.c: 469:         int index;
+[v _index `i ~T0 @X0 1 a ]
 "470
-[; ;newmain.c: 470:         LATDbits.LATD0 = 1;
-[e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
+[; ;newmain.c: 470:         if(i==0) index = 9;
+[e $ ! == _i -> 0 `i 392  ]
+[e = _index -> 9 `i ]
+[e $U 393  ]
 "471
-[; ;newmain.c: 471:         LATDbits.LATD1 = 1;
-[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
+[; ;newmain.c: 471:         else if(i==1) index = 8;
+[e :U 392 ]
+[e $ ! == _i -> 1 `i 394  ]
+[e = _index -> 8 `i ]
+[e $U 395  ]
 "472
-[; ;newmain.c: 472:         LATDbits.LATD2 = 1;
-[e = . . _LATDbits 0 2 -> -> 1 `i `uc ]
+[; ;newmain.c: 472:         else if(i==2) index = 11;
+[e :U 394 ]
+[e $ ! == _i -> 2 `i 396  ]
+[e = _index -> 11 `i ]
+[e $U 397  ]
 "473
-[; ;newmain.c: 473:         int temp = LATDbits.LATD6;
+[; ;newmain.c: 473:         else if(i==3) index = 10;
+[e :U 396 ]
+[e $ ! == _i -> 3 `i 398  ]
+[e = _index -> 10 `i ]
+[e :U 398 ]
+[e :U 397 ]
+[e :U 395 ]
+[e :U 393 ]
+"474
+[; ;newmain.c: 474:         LATBbits.LATB0 = rgb[index].r;
+[e = . . _LATBbits 0 0 -> . *U + &U _rgb * -> -> _index `ui `ux -> -> # *U &U _rgb `ui `ux 0 `uc ]
+"475
+[; ;newmain.c: 475:         LATBbits.LATB1 = rgb[index].g;
+[e = . . _LATBbits 0 1 -> . *U + &U _rgb * -> -> _index `ui `ux -> -> # *U &U _rgb `ui `ux 1 `uc ]
+"476
+[; ;newmain.c: 476:         LATBbits.LATB2 = rgb[index].b;
+[e = . . _LATBbits 0 2 -> . *U + &U _rgb * -> -> _index `ui `ux -> -> # *U &U _rgb `ui `ux 2 `uc ]
+"477
+[; ;newmain.c: 477:         _delay((unsigned long)((5)*(20000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 5 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+"478
+[; ;newmain.c: 478:         LATDbits.LATD0 = 1;
+[e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
+"479
+[; ;newmain.c: 479:         LATDbits.LATD1 = 1;
+[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
+"480
+[; ;newmain.c: 480:         LATDbits.LATD2 = 1;
+[e = . . _LATDbits 0 2 -> -> 1 `i `uc ]
+"481
+[; ;newmain.c: 481:         LATBbits.LATB0 = 1;
+[e = . . _LATBbits 0 0 -> -> 1 `i `uc ]
+"482
+[; ;newmain.c: 482:         LATBbits.LATB1 = 1;
+[e = . . _LATBbits 0 1 -> -> 1 `i `uc ]
+"483
+[; ;newmain.c: 483:         LATBbits.LATB2 = 1;
+[e = . . _LATBbits 0 2 -> -> 1 `i `uc ]
+"484
+[; ;newmain.c: 484:         int temp = LATDbits.LATD6;
 [v _temp `i ~T0 @X0 1 a ]
 [e = _temp -> . . _LATDbits 0 6 `i ]
-"474
-[; ;newmain.c: 474:         LATDbits.LATD6 = LATDbits.LATD5;
-[e = . . _LATDbits 0 6 . . _LATDbits 0 5 ]
-"475
-[; ;newmain.c: 475:         LATDbits.LATD5 = LATDbits.LATD4;
-[e = . . _LATDbits 0 5 . . _LATDbits 0 4 ]
-"476
-[; ;newmain.c: 476:         LATDbits.LATD4 = LATDbits.LATD3;
-[e = . . _LATDbits 0 4 . . _LATDbits 0 3 ]
-"477
-[; ;newmain.c: 477:         LATDbits.LATD3 = temp;
-[e = . . _LATDbits 0 3 -> _temp `uc ]
-"478
-[; ;newmain.c: 478:         i++;
-[e ++ _i -> 1 `i ]
-"479
-[; ;newmain.c: 479:         if(i == 4){
-[e $ ! == _i -> 4 `i 386  ]
-{
-"480
-[; ;newmain.c: 480:             i = 0;
-[e = _i -> 0 `i ]
-"481
-[; ;newmain.c: 481:         }
-}
-[e :U 386 ]
-"482
-[; ;newmain.c: 482:         turn++;
-[e ++ _turn -> 1 `i ]
-"483
-[; ;newmain.c: 483:         if(turn == 6) turn = 0;
-[e $ ! == _turn -> 6 `i 387  ]
-[e = _turn -> 0 `i ]
-[e :U 387 ]
-"484
-[; ;newmain.c: 484:     }
-}
-[e :U 380 ]
-[e $U 381  ]
-[e :U 382 ]
 "485
-[; ;newmain.c: 485:     return;
-[e $UE 376  ]
+[; ;newmain.c: 485:         LATDbits.LATD6 = LATDbits.LATD5;
+[e = . . _LATDbits 0 6 . . _LATDbits 0 5 ]
 "486
-[; ;newmain.c: 486: }
-[e :UE 376 ]
+[; ;newmain.c: 486:         LATDbits.LATD5 = LATDbits.LATD4;
+[e = . . _LATDbits 0 5 . . _LATDbits 0 4 ]
+"487
+[; ;newmain.c: 487:         LATDbits.LATD4 = LATDbits.LATD3;
+[e = . . _LATDbits 0 4 . . _LATDbits 0 3 ]
+"488
+[; ;newmain.c: 488:         LATDbits.LATD3 = temp;
+[e = . . _LATDbits 0 3 -> _temp `uc ]
+"489
+[; ;newmain.c: 489:         i++;
+[e ++ _i -> 1 `i ]
+"490
+[; ;newmain.c: 490:         if(i == 4){
+[e $ ! == _i -> 4 `i 399  ]
+{
+"491
+[; ;newmain.c: 491:             i = 0;
+[e = _i -> 0 `i ]
+"492
+[; ;newmain.c: 492:         }
+}
+[e :U 399 ]
+"493
+[; ;newmain.c: 493:         turn++;
+[e ++ _turn -> 1 `i ]
+"494
+[; ;newmain.c: 494:         if(turn == 6) turn = 0;
+[e $ ! == _turn -> 6 `i 400  ]
+[e = _turn -> 0 `i ]
+[e :U 400 ]
+"495
+[; ;newmain.c: 495:     }
+}
+[e :U 378 ]
+[e $U 379  ]
+[e :U 380 ]
+"496
+[; ;newmain.c: 496:     return;
+[e $UE 374  ]
+"497
+[; ;newmain.c: 497: }
+[e :UE 374 ]
 }

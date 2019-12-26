@@ -4744,8 +4744,6 @@ int ADC_Read(int channle)
 {
     int digital;
 
-    if(channle == 2) channle = 6;
-    if(channle == 3) channle = 7;
     ADCON0bits.CHS = channle;
     ADCON0bits.GO = 1;
     ADCON0bits.ADON = 1;
@@ -5075,6 +5073,8 @@ void main(void) {
     ADC_Initialize();
     TRISD =0;
     LATD = 0;
+    TRISB =0;
+    LATB = 0;
     LATDbits.LATD3 = 1;
     int i = 0;
     int j;
@@ -5085,8 +5085,18 @@ void main(void) {
     }
     int turn = 0;
     while(1){
-# 444 "newmain.c"
-            if(turn == 2) {
+
+            if(turn == 0) {
+                int val = ADC_Read(0);
+                rotate_top(val/300);
+                original[0] = val/300;
+            }
+            else if(turn == 1) {
+                int val = ADC_Read(1);
+                rotate_bot(val/300);
+                original[1] = val/300;
+            }
+            else if(turn == 2) {
                 int val = ADC_Read(6);
                 rotate_r(val/300);
                 original[2] = val/300;
@@ -5096,14 +5106,36 @@ void main(void) {
                 rotate_l(val/300);
                 original[3] = val/300;
             }
-# 466 "newmain.c"
+            else if(turn == 4) {
+                int val = ADC_Read(4);
+                rotate_sidetop(val/300);
+                original[4] = val/300;
+            }
+            else if(turn == 5) {
+                int val = ADC_Read(5);
+                rotate_sidebot(val/300);
+                original[5] = val/300;
+            }
+
+
         LATDbits.LATD0 = rgb[i].r;
         LATDbits.LATD1 = rgb[i].g;
         LATDbits.LATD2 = rgb[i].b;
-
+        int index;
+        if(i==0) index = 9;
+        else if(i==1) index = 8;
+        else if(i==2) index = 11;
+        else if(i==3) index = 10;
+        LATBbits.LATB0 = rgb[index].r;
+        LATBbits.LATB1 = rgb[index].g;
+        LATBbits.LATB2 = rgb[index].b;
+        _delay((unsigned long)((5)*(20000000/4000000.0)));
         LATDbits.LATD0 = 1;
         LATDbits.LATD1 = 1;
         LATDbits.LATD2 = 1;
+        LATBbits.LATB0 = 1;
+        LATBbits.LATB1 = 1;
+        LATBbits.LATB2 = 1;
         int temp = LATDbits.LATD6;
         LATDbits.LATD6 = LATDbits.LATD5;
         LATDbits.LATD5 = LATDbits.LATD4;
